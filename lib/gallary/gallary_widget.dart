@@ -144,7 +144,6 @@ class _GallaryWidgetState extends State<GallaryWidget> {
                       final selectedMedia = await selectMedia(
                         maxWidth: 300.00,
                         maxHeight: 250.00,
-                        fromCamera: true,
                       );
                       if (selectedMedia != null &&
                           validateFileFormat(

@@ -42,7 +42,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                       width: double.infinity,
                       height: 100,
                       decoration: BoxDecoration(
-                        color: Color(0xFFE8E8E8),
+                        color: Colors.white,
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(12),
                           bottomRight: Radius.circular(12),
@@ -202,7 +202,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                           listViewPostsRecordList[listViewIndex];
                       return Card(
                         clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: Color(0xFFF5F5F5),
+                        color: Colors.white,
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -228,10 +228,10 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 100,
+                                      width: 235,
                                       height: 45,
                                       decoration: BoxDecoration(
-                                        color: Color(0xFFEEEEEE),
+                                        color: Color(0xE6E6E6E6),
                                       ),
                                       child: Padding(
                                         padding:
@@ -263,7 +263,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                         width: 100,
                                         height: 45,
                                         decoration: BoxDecoration(
-                                          color: Color(0xFFEEEEEE),
+                                          color: Colors.white,
                                         ),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,

@@ -33,6 +33,34 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   String get nickName;
 
   @nullable
+  int get likes;
+
+  @nullable
+  int get idNumber;
+
+  @nullable
+  String get position;
+
+  @nullable
+  int get height;
+
+  @nullable
+  int get weight;
+
+  @nullable
+  String get teamName;
+
+  @nullable
+  bool get validPlayer;
+
+  @nullable
+  @BuiltValueField(wireName: 'squad_logo')
+  String get squadLogo;
+
+  @nullable
+  String get bio;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -41,7 +69,16 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..displayName = ''
     ..photoUrl = ''
     ..uid = ''
-    ..nickName = '';
+    ..nickName = ''
+    ..likes = 0
+    ..idNumber = 0
+    ..position = ''
+    ..height = 0
+    ..weight = 0
+    ..teamName = ''
+    ..validPlayer = false
+    ..squadLogo = ''
+    ..bio = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -62,6 +99,15 @@ Map<String, dynamic> createUsersRecordData({
   String uid,
   Timestamp createdTime,
   String nickName,
+  int likes,
+  int idNumber,
+  String position,
+  int height,
+  int weight,
+  String teamName,
+  bool validPlayer,
+  String squadLogo,
+  String bio,
 }) =>
     serializers.serializeWith(
         UsersRecord.serializer,
@@ -71,7 +117,16 @@ Map<String, dynamic> createUsersRecordData({
           ..photoUrl = photoUrl
           ..uid = uid
           ..createdTime = createdTime
-          ..nickName = nickName));
+          ..nickName = nickName
+          ..likes = likes
+          ..idNumber = idNumber
+          ..position = position
+          ..height = height
+          ..weight = weight
+          ..teamName = teamName
+          ..validPlayer = validPlayer
+          ..squadLogo = squadLogo
+          ..bio = bio));
 
 UsersRecord get dummyUsersRecord {
   final builder = UsersRecordBuilder()
@@ -80,7 +135,16 @@ UsersRecord get dummyUsersRecord {
     ..photoUrl = dummyImagePath
     ..uid = dummyString
     ..createdTime = dummyTimestamp
-    ..nickName = dummyString;
+    ..nickName = dummyString
+    ..likes = dummyInteger
+    ..idNumber = dummyInteger
+    ..position = dummyString
+    ..height = dummyInteger
+    ..weight = dummyInteger
+    ..teamName = dummyString
+    ..validPlayer = dummyBoolean
+    ..squadLogo = dummyImagePath
+    ..bio = dummyString;
   return builder.build();
 }
 

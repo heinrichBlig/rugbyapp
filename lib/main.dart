@@ -91,7 +91,6 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: FaIcon(
               FontAwesomeIcons.users,
-              color: Color(0xFF9E9E9E),
               size: 24,
             ),
             label: 'Squad',
@@ -99,7 +98,6 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: FaIcon(
               FontAwesomeIcons.video,
-              color: Color(0xFF9E9E9E),
               size: 24,
             ),
             label: 'Upskill',
@@ -107,7 +105,6 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: FaIcon(
               FontAwesomeIcons.userCircle,
-              color: Color(0xFF9E9E9E),
               size: 24,
             ),
             label: 'Profile',
