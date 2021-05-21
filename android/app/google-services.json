@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "448628058606",
+    "project_id": "rugby-99d40",
+    "storage_bucket": "rugby-99d40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448628058606:android:d4b248db2a6ec8ec4e46ff",
+        "android_client_info": {
+          "package_name": "com.brandhue.rugb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448628058606-7jsgfm29t1utpl90q3bvi57kesqnev72.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZI1L_INtqscHLi0pkv0pu_2vGg9wamwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448628058606-7jsgfm29t1utpl90q3bvi57kesqnev72.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
