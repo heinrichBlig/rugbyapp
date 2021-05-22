@@ -757,6 +757,14 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                               'Failed to upload media');
                                         }
                                       }
+                                      await Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              ProfileEditWidget(),
+                                        ),
+                                        (r) => false,
+                                      );
                                     },
                                     icon: Icon(
                                       Icons.upload_file,
