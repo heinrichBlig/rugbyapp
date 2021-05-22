@@ -2,7 +2,9 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/icon_only_button_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
 import '../gallary/gallary_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -265,30 +267,42 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                         decoration: BoxDecoration(
                                           color: Colors.white,
                                         ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            IconButton(
-                                              onPressed: () {
-                                                print('IconButton pressed ...');
-                                              },
-                                              icon: Icon(
-                                                Icons.favorite_border,
-                                                color: Color(0xFF49DF8B),
-                                                size: 30,
+                                        child: InkWell(
+                                          onTap: () async {
+                                            final postsRecordData = {
+                                              'liked': FieldValue.increment(1),
+                                            };
+
+                                            await listViewPostsRecord.reference
+                                                .update(postsRecordData);
+                                          },
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              IconButton(
+                                                onPressed: () {
+                                                  print(
+                                                      'IconButton pressed ...');
+                                                },
+                                                icon: Icon(
+                                                  Icons.favorite_border,
+                                                  color: Color(0xFF49DF8B),
+                                                  size: 30,
+                                                ),
+                                                iconSize: 30,
                                               ),
-                                              iconSize: 30,
-                                            ),
-                                            Text(
-                                              listViewPostsRecord.liked
-                                                  .toString(),
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Poppins',
-                                                color: Color(0xFF49DF8B),
-                                              ),
-                                            )
-                                          ],
+                                              Text(
+                                                listViewPostsRecord.liked
+                                                    .toString(),
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: Color(0xFF49DF8B),
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     )
