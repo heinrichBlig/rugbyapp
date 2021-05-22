@@ -209,7 +209,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Image.network(
-                              'https://picsum.photos/seed/711/600',
+                              listViewPostsRecord.imgUrl,
                               width: double.infinity,
                               height: MediaQuery.of(context).size.height * 0.3,
                               fit: BoxFit.cover,

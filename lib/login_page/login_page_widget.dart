@@ -66,48 +66,51 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             children: [
                               Align(
                                 alignment: Alignment(0, 0),
-                                child: TextFormField(
-                                  controller: emailTextController,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    hintText: 'Username',
-                                    hintStyle: GoogleFonts.getFont(
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 3, 0, 0),
+                                  child: TextFormField(
+                                    controller: emailTextController,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      hintText: 'email',
+                                      hintStyle: GoogleFonts.getFont(
+                                        'Lato',
+                                        color: Colors.white,
+                                        fontSize: 18,
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0xFF3C2452),
+                                          width: 2,
+                                        ),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(4.0),
+                                          topRight: Radius.circular(4.0),
+                                        ),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0xFF3C2452),
+                                          width: 2,
+                                        ),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(4.0),
+                                          topRight: Radius.circular(4.0),
+                                        ),
+                                      ),
+                                    ),
+                                    style: GoogleFonts.getFont(
                                       'Lato',
                                       color: Colors.white,
                                       fontSize: 18,
                                     ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFF3C2452),
-                                        width: 2,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFF3C2452),
-                                        width: 2,
-                                      ),
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(4.0),
-                                        topRight: Radius.circular(4.0),
-                                      ),
-                                    ),
-                                  ),
-                                  style: GoogleFonts.getFont(
-                                    'Lato',
-                                    color: Colors.white,
-                                    fontSize: 18,
                                   ),
                                 ),
                               ),
                               Align(
                                 alignment: Alignment(0.95, 0.5),
                                 child: Icon(
-                                  Icons.person,
+                                  Icons.email_outlined,
                                   color: Colors.white,
                                   size: 24,
                                 ),
