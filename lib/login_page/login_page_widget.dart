@@ -38,12 +38,15 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
           child: Stack(
             children: [
               Align(
-                alignment: Alignment(0.06, -0.63),
-                child: Image.network(
-                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/flutterflow_assets/ff_full_logo_light.png',
-                  width: 280,
-                  height: 100,
-                  fit: BoxFit.contain,
+                alignment: Alignment(0.16, -1.22),
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 100),
+                  child: Image.asset(
+                    'assets/images/RUGB.APP-01.png',
+                    width: 320,
+                    height: 300,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
               Align(

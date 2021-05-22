@@ -28,7 +28,7 @@ class _FeedAndUpskillButtonWidgetState
       child: Padding(
         padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
         child: Container(
-          width: 140,
+          width: 120,
           height: 42,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
