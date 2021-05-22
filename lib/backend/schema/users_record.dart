@@ -61,6 +61,9 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   String get bio;
 
   @nullable
+  int get age;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -78,7 +81,8 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..teamName = ''
     ..validPlayer = false
     ..squadLogo = ''
-    ..bio = '';
+    ..bio = ''
+    ..age = 0;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -108,6 +112,7 @@ Map<String, dynamic> createUsersRecordData({
   bool validPlayer,
   String squadLogo,
   String bio,
+  int age,
 }) =>
     serializers.serializeWith(
         UsersRecord.serializer,
@@ -126,7 +131,8 @@ Map<String, dynamic> createUsersRecordData({
           ..teamName = teamName
           ..validPlayer = validPlayer
           ..squadLogo = squadLogo
-          ..bio = bio));
+          ..bio = bio
+          ..age = age));
 
 UsersRecord get dummyUsersRecord {
   final builder = UsersRecordBuilder()
@@ -144,7 +150,8 @@ UsersRecord get dummyUsersRecord {
     ..teamName = dummyString
     ..validPlayer = dummyBoolean
     ..squadLogo = dummyImagePath
-    ..bio = dummyString;
+    ..bio = dummyString
+    ..age = dummyInteger;
   return builder.build();
 }
 
