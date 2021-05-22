@@ -183,8 +183,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                           ],
                                         ),
                                         Padding(
-                                          padding:
-                                              EdgeInsets.fromLTRB(10, 5, 10, 0),
+                                          padding: EdgeInsets.fromLTRB(
+                                              10, 5, 10, 10),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:

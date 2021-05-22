@@ -85,7 +85,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                     topRight: Radius.circular(24),
                                   ),
                                   child: Image.network(
-                                    cardUsersRecord.photoUrl,
+                                    currentUserPhoto,
                                     width: double.infinity,
                                     height: 249,
                                     fit: BoxFit.cover,
@@ -121,6 +121,14 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                             context, 'Failed to upload media');
                                       }
                                     }
+                                    await Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            ProfileEditWidget(),
+                                      ),
+                                      (r) => false,
+                                    );
                                   },
                                   child: TextIconButtonWidget(
                                     text: 'Upload',
@@ -410,7 +418,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                 Padding(
                                   padding: EdgeInsets.fromLTRB(1, 0, 1, 1),
                                   child: Container(
-                                    width: 145,
+                                    width: 140,
                                     height: 42,
                                     decoration: BoxDecoration(
                                       color: Color(0xFFE8E8E8),
@@ -485,7 +493,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                 Padding(
                                   padding: EdgeInsets.fromLTRB(1, 0, 1, 1),
                                   child: Container(
-                                    width: 145,
+                                    width: 140,
                                     height: 42,
                                     decoration: BoxDecoration(
                                       color: Color(0xFFE8E8E8),
@@ -841,8 +849,15 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       bio: bio,
                                     );
 
-                                    await cardUsersRecord.reference
+                                    await currentUserReference
                                         .update(usersRecordData);
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            NavBarPage(initialPage: 'profile'),
+                                      ),
+                                    );
                                   },
                                   text: 'Save & Close',
                                   options: FFButtonOptions(

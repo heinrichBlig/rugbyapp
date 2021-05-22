@@ -6,10 +6,12 @@ import '../flutter_flow/flutter_flow_util.dart';
 
 import 'schema/users_record.dart';
 import 'schema/posts_record.dart';
+import 'schema/squads_record.dart';
 import 'schema/serializers.dart';
 
 export 'schema/users_record.dart';
 export 'schema/posts_record.dart';
+export 'schema/squads_record.dart';
 
 Stream<List<UsersRecord>> queryUsersRecord(
         {Query Function(Query) queryBuilder,
@@ -23,6 +25,13 @@ Stream<List<PostsRecord>> queryPostsRecord(
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollection(PostsRecord.collection, PostsRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<SquadsRecord>> querySquadsRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(SquadsRecord.collection, SquadsRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
 Stream<List<T>> queryCollection<T>(

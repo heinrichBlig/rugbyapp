@@ -215,8 +215,8 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                               fit: BoxFit.cover,
                             ),
                             StreamBuilder<UsersRecord>(
-                              stream:
-                                  UsersRecord.getDocument(currentUserReference),
+                              stream: UsersRecord.getDocument(
+                                  listViewPostsRecord.user),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
@@ -271,7 +271,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                               .update(postsRecordData);
                                         },
                                         child: Container(
-                                          width: 100,
+                                          width: 149,
                                           height: 45,
                                           decoration: BoxDecoration(
                                             color: Colors.white,
