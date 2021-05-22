@@ -1,4 +1,4 @@
-package com.flutterflow.rugbapp
+package com.brandhue.rugbapp
 
 import io.flutter.embedding.android.FlutterActivity
 

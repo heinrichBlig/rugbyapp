@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>448628058606-mp5bd0j2gq2s23bc0ndknqkhe22nm0fb.apps.googleusercontent.com</string>
+	<string>1017030099672-q9t8gbhikojr41muinr602ad05f8bhar.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.448628058606-mp5bd0j2gq2s23bc0ndknqkhe22nm0fb</string>
+	<string>com.googleusercontent.apps.1017030099672-q9t8gbhikojr41muinr602ad05f8bhar</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAJ1Lk6SRik1v5Yuf5j_34bLxEcfxxtSwM</string>
+	<string>AIzaSyBWQDLbPjhBATs3v_VsowxiPh7kD6BDHTo</string>
 	<key>GCM_SENDER_ID</key>
-	<string>448628058606</string>
+	<string>1017030099672</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.brandhue.rugb</string>
+	<string>com.brandhue.rugbapp</string>
 	<key>PROJECT_ID</key>
-	<string>rugby-99d40</string>
+	<string>rugbapp</string>
 	<key>STORAGE_BUCKET</key>
-	<string>rugby-99d40.appspot.com</string>
+	<string>rugbapp.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:448628058606:ios:e1b11082a6c6965e4e46ff</string>
+	<string>1:1017030099672:ios:89dea599c032d3e63fcdad</string>
 </dict>
 </plist>
