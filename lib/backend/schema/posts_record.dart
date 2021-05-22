@@ -16,9 +16,6 @@ abstract class PostsRecord implements Built<PostsRecord, PostsRecordBuilder> {
   String get imgUrl;
 
   @nullable
-  int get liked;
-
-  @nullable
   @BuiltValueField(wireName: 'set_time')
   Timestamp get setTime;
 
@@ -26,12 +23,15 @@ abstract class PostsRecord implements Built<PostsRecord, PostsRecordBuilder> {
   DocumentReference get user;
 
   @nullable
+  int get likes;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
   static void _initializeBuilder(PostsRecordBuilder builder) => builder
     ..imgUrl = ''
-    ..liked = 0;
+    ..likes = 0;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('posts');
@@ -47,23 +47,23 @@ abstract class PostsRecord implements Built<PostsRecord, PostsRecordBuilder> {
 
 Map<String, dynamic> createPostsRecordData({
   String imgUrl,
-  int liked,
   Timestamp setTime,
   DocumentReference user,
+  int likes,
 }) =>
     serializers.serializeWith(
         PostsRecord.serializer,
         PostsRecord((p) => p
           ..imgUrl = imgUrl
-          ..liked = liked
           ..setTime = setTime
-          ..user = user));
+          ..user = user
+          ..likes = likes));
 
 PostsRecord get dummyPostsRecord {
   final builder = PostsRecordBuilder()
     ..imgUrl = dummyImagePath
-    ..liked = dummyInteger
-    ..setTime = dummyTimestamp;
+    ..setTime = dummyTimestamp
+    ..likes = dummyInteger;
   return builder.build();
 }
 

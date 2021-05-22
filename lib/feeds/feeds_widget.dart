@@ -261,21 +261,21 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                     ),
                                     Padding(
                                       padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                      child: Container(
-                                        width: 100,
-                                        height: 45,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            final postsRecordData = {
-                                              'liked': FieldValue.increment(1),
-                                            };
+                                      child: InkWell(
+                                        onTap: () async {
+                                          final postsRecordData = {
+                                            'likes': FieldValue.increment(1),
+                                          };
 
-                                            await listViewPostsRecord.reference
-                                                .update(postsRecordData);
-                                          },
+                                          await listViewPostsRecord.reference
+                                              .update(postsRecordData);
+                                        },
+                                        child: Container(
+                                          width: 100,
+                                          height: 45,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                          ),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -292,7 +292,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                                 iconSize: 30,
                                               ),
                                               Text(
-                                                listViewPostsRecord.liked
+                                                listViewPostsRecord.likes
                                                     .toString(),
                                                 style: FlutterFlowTheme
                                                     .bodyText1
