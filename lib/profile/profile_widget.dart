@@ -292,7 +292,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                       ),
                                                     ),
                                                     Text(
-                                                      cardUsersRecord.likes
+                                                      cardUsersRecord
+                                                          .profileLike
                                                           .toString(),
                                                       style: FlutterFlowTheme
                                                           .bodyText1
