@@ -238,24 +238,41 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                       child: Padding(
                                         padding:
                                             EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Text(
-                                              '@',
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Poppins',
+                                        child: InkWell(
+                                          onTap: () async {
+                                            final user =
+                                                listViewPostsRecord.user;
+
+                                            final squadsRecordData =
+                                                createSquadsRecordData(
+                                              user: user,
+                                            );
+
+                                            await SquadsRecord.collection
+                                                .doc()
+                                                .set(squadsRecordData);
+                                          },
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Text(
+                                                '@',
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Poppins',
+                                                ),
                                               ),
-                                            ),
-                                            Text(
-                                              rowUsersRecord.nickName,
-                                              style: FlutterFlowTheme.bodyText1
-                                                  .override(
-                                                fontFamily: 'Poppins',
-                                              ),
-                                            )
-                                          ],
+                                              Text(
+                                                rowUsersRecord.nickName,
+                                                style: FlutterFlowTheme
+                                                    .bodyText1
+                                                    .override(
+                                                  fontFamily: 'Poppins',
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),

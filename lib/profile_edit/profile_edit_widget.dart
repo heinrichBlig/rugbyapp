@@ -731,7 +731,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       color: Color(0xFFEEEEEE),
                                     ),
                                     child: Image.network(
-                                      'https://picsum.photos/seed/321/600',
+                                      cardUsersRecord.squadLogo,
                                       width: 100,
                                       height: 100,
                                       fit: BoxFit.cover,
@@ -823,7 +823,6 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                   onPressed: () async {
                                     final displayName = textController1.text;
                                     final photoUrl = uploadedFileUrl1;
-                                    final nickName = textController3.text;
                                     final idNumber =
                                         int.parse(textController2.text);
                                     final position = textController4.text;
@@ -834,12 +833,13 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                     final teamName = textController8.text;
                                     final squadLogo = uploadedFileUrl2;
                                     final bio = textController7.text;
+                                    final createdTime = getCurrentTimestamp;
+                                    final nickName = textController3.text;
 
                                     final usersRecordData =
                                         createUsersRecordData(
                                       displayName: displayName,
                                       photoUrl: photoUrl,
-                                      nickName: nickName,
                                       idNumber: idNumber,
                                       position: position,
                                       height: height,
@@ -847,6 +847,8 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       teamName: teamName,
                                       squadLogo: squadLogo,
                                       bio: bio,
+                                      createdTime: createdTime,
+                                      nickName: nickName,
                                     );
 
                                     await currentUserReference

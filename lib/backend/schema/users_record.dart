@@ -30,9 +30,6 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   Timestamp get createdTime;
 
   @nullable
-  String get nickName;
-
-  @nullable
   int get idNumber;
 
   @nullable
@@ -65,6 +62,10 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   int get profileLike;
 
   @nullable
+  @BuiltValueField(wireName: 'nick_name')
+  String get nickName;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -73,7 +74,6 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..displayName = ''
     ..photoUrl = ''
     ..uid = ''
-    ..nickName = ''
     ..idNumber = 0
     ..position = ''
     ..height = 0
@@ -83,7 +83,8 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..squadLogo = ''
     ..bio = ''
     ..age = 0
-    ..profileLike = 0;
+    ..profileLike = 0
+    ..nickName = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -103,7 +104,6 @@ Map<String, dynamic> createUsersRecordData({
   String photoUrl,
   String uid,
   Timestamp createdTime,
-  String nickName,
   int idNumber,
   String position,
   int height,
@@ -114,6 +114,7 @@ Map<String, dynamic> createUsersRecordData({
   String bio,
   int age,
   int profileLike,
+  String nickName,
 }) =>
     serializers.serializeWith(
         UsersRecord.serializer,
@@ -123,7 +124,6 @@ Map<String, dynamic> createUsersRecordData({
           ..photoUrl = photoUrl
           ..uid = uid
           ..createdTime = createdTime
-          ..nickName = nickName
           ..idNumber = idNumber
           ..position = position
           ..height = height
@@ -133,7 +133,8 @@ Map<String, dynamic> createUsersRecordData({
           ..squadLogo = squadLogo
           ..bio = bio
           ..age = age
-          ..profileLike = profileLike));
+          ..profileLike = profileLike
+          ..nickName = nickName));
 
 UsersRecord get dummyUsersRecord {
   final builder = UsersRecordBuilder()
@@ -142,7 +143,6 @@ UsersRecord get dummyUsersRecord {
     ..photoUrl = dummyImagePath
     ..uid = dummyString
     ..createdTime = dummyTimestamp
-    ..nickName = dummyString
     ..idNumber = dummyInteger
     ..position = dummyString
     ..height = dummyInteger
@@ -152,7 +152,8 @@ UsersRecord get dummyUsersRecord {
     ..squadLogo = dummyImagePath
     ..bio = dummyString
     ..age = dummyInteger
-    ..profileLike = dummyInteger;
+    ..profileLike = dummyInteger
+    ..nickName = dummyString;
   return builder.build();
 }
 
