@@ -4,6 +4,7 @@ import '../components/icon_only_button_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../gallary/gallary_widget.dart';
+import '../main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -251,6 +252,15 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                             await SquadsRecord.collection
                                                 .doc()
                                                 .set(squadsRecordData);
+                                            await Navigator.pushAndRemoveUntil(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    NavBarPage(
+                                                        initialPage: 'squad'),
+                                              ),
+                                              (r) => false,
+                                            );
                                           },
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
