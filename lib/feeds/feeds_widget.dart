@@ -40,7 +40,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                 Align(
                   alignment: Alignment(0, 0),
                   child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
+                    padding: EdgeInsets.fromLTRB(10, 100, 10, 0),
                     child: Container(
                       width: double.infinity,
                       height: 100,
@@ -196,151 +196,157 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                     // For now, we'll just include some dummy data.
                     listViewPostsRecordList = createDummyPostsRecord(count: 4);
                   }
-                  return ListView.builder(
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.vertical,
-                    itemCount: listViewPostsRecordList.length,
-                    itemBuilder: (context, listViewIndex) {
-                      final listViewPostsRecord =
-                          listViewPostsRecordList[listViewIndex];
-                      return Card(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        color: Colors.white,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Image.network(
-                              listViewPostsRecord.imgUrl,
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.3,
-                              fit: BoxFit.cover,
-                            ),
-                            StreamBuilder<UsersRecord>(
-                              stream: UsersRecord.getDocument(
-                                  listViewPostsRecord.user),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                      child: CircularProgressIndicator());
-                                }
-                                final rowUsersRecord = snapshot.data;
-                                return Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      width: 220,
-                                      height: 45,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xE6E6E6E6),
+                  return Padding(
+                    padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    child: ListView.builder(
+                      padding: EdgeInsets.zero,
+                      scrollDirection: Axis.vertical,
+                      itemCount: listViewPostsRecordList.length,
+                      itemBuilder: (context, listViewIndex) {
+                        final listViewPostsRecord =
+                            listViewPostsRecordList[listViewIndex];
+                        return Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color: Colors.white,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Image.network(
+                                listViewPostsRecord.imgUrl,
+                                width: double.infinity,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.3,
+                                fit: BoxFit.cover,
+                              ),
+                              StreamBuilder<UsersRecord>(
+                                stream: UsersRecord.getDocument(
+                                    listViewPostsRecord.user),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                        child: CircularProgressIndicator());
+                                  }
+                                  final rowUsersRecord = snapshot.data;
+                                  return Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        width: 220,
+                                        height: 45,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xE6E6E6E6),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                          child: InkWell(
+                                            onTap: () async {
+                                              final user =
+                                                  listViewPostsRecord.user;
+
+                                              final squadsRecordData =
+                                                  createSquadsRecordData(
+                                                user: user,
+                                              );
+
+                                              await SquadsRecord.collection
+                                                  .doc()
+                                                  .set(squadsRecordData);
+                                              await Navigator
+                                                  .pushAndRemoveUntil(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      NavBarPage(
+                                                          initialPage: 'squad'),
+                                                ),
+                                                (r) => false,
+                                              );
+                                            },
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Text(
+                                                  '@',
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1
+                                                      .override(
+                                                    fontFamily: 'Poppins',
+                                                  ),
+                                                ),
+                                                Text(
+                                                  rowUsersRecord.nickName,
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1
+                                                      .override(
+                                                    fontFamily: 'Poppins',
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
                                       ),
-                                      child: Padding(
+                                      Padding(
                                         padding:
-                                            EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                            EdgeInsets.fromLTRB(0, 0, 10, 0),
                                         child: InkWell(
                                           onTap: () async {
-                                            final user =
-                                                listViewPostsRecord.user;
+                                            final postsRecordData = {
+                                              'likes': FieldValue.increment(1),
+                                            };
 
-                                            final squadsRecordData =
-                                                createSquadsRecordData(
-                                              user: user,
-                                            );
-
-                                            await SquadsRecord.collection
-                                                .doc()
-                                                .set(squadsRecordData);
-                                            await Navigator.pushAndRemoveUntil(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    NavBarPage(
-                                                        initialPage: 'squad'),
-                                              ),
-                                              (r) => false,
-                                            );
+                                            await listViewPostsRecord.reference
+                                                .update(postsRecordData);
                                           },
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Text(
-                                                '@',
-                                                style: FlutterFlowTheme
-                                                    .bodyText1
-                                                    .override(
-                                                  fontFamily: 'Poppins',
+                                          child: Container(
+                                            width: 149,
+                                            height: 45,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                IconButton(
+                                                  onPressed: () {
+                                                    print(
+                                                        'IconButton pressed ...');
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.favorite_border,
+                                                    color: Color(0xFF49DF8B),
+                                                    size: 30,
+                                                  ),
+                                                  iconSize: 30,
                                                 ),
-                                              ),
-                                              Text(
-                                                rowUsersRecord.nickName,
-                                                style: FlutterFlowTheme
-                                                    .bodyText1
-                                                    .override(
-                                                  fontFamily: 'Poppins',
-                                                ),
-                                              )
-                                            ],
+                                                Text(
+                                                  listViewPostsRecord.likes
+                                                      .toString(),
+                                                  style: FlutterFlowTheme
+                                                      .bodyText1
+                                                      .override(
+                                                    fontFamily: 'Poppins',
+                                                    color: Color(0xFF49DF8B),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                      child: InkWell(
-                                        onTap: () async {
-                                          final postsRecordData = {
-                                            'likes': FieldValue.increment(1),
-                                          };
-
-                                          await listViewPostsRecord.reference
-                                              .update(postsRecordData);
-                                        },
-                                        child: Container(
-                                          width: 149,
-                                          height: 45,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              IconButton(
-                                                onPressed: () {
-                                                  print(
-                                                      'IconButton pressed ...');
-                                                },
-                                                icon: Icon(
-                                                  Icons.favorite_border,
-                                                  color: Color(0xFF49DF8B),
-                                                  size: 30,
-                                                ),
-                                                iconSize: 30,
-                                              ),
-                                              Text(
-                                                listViewPostsRecord.likes
-                                                    .toString(),
-                                                style: FlutterFlowTheme
-                                                    .bodyText1
-                                                    .override(
-                                                  fontFamily: 'Poppins',
-                                                  color: Color(0xFF49DF8B),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                );
-                              },
-                            )
-                          ],
-                        ),
-                      );
-                    },
+                                      )
+                                    ],
+                                  );
+                                },
+                              )
+                            ],
+                          ),
+                        );
+                      },
+                    ),
                   );
                 },
               ),
