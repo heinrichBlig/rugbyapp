@@ -7,7 +7,6 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'feeds/feeds_widget.dart';
 import 'squad/squad_widget.dart';
 import 'upskill/upskill_widget.dart';
-import 'profile/profile_widget.dart';
 import 'test/test_widget.dart';
 
 void main() async {
@@ -76,7 +75,6 @@ class _NavBarPageState extends State<NavBarPage> {
       'Feeds': FeedsWidget(),
       'squad': SquadWidget(),
       'upskill': UpskillWidget(),
-      'profile': ProfileWidget(),
       'test': TestWidget(),
     };
     return Scaffold(
@@ -103,13 +101,6 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24,
             ),
             label: 'Upskill',
-          ),
-          BottomNavigationBarItem(
-            icon: FaIcon(
-              FontAwesomeIcons.userCircle,
-              size: 24,
-            ),
-            label: 'Profile',
           ),
           BottomNavigationBarItem(
             icon: Icon(

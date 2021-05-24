@@ -7,6 +7,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import '../main.dart';
+import '../profile/profile_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -796,8 +797,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                     await Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                            NavBarPage(initialPage: 'profile'),
+                                        builder: (context) => ProfileWidget(),
                                       ),
                                       (r) => false,
                                     );
@@ -856,8 +856,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                     await Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                            NavBarPage(initialPage: 'profile'),
+                                        builder: (context) => ProfileWidget(),
                                       ),
                                     );
                                   },
