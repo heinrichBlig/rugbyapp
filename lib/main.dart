@@ -7,7 +7,7 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'feeds/feeds_widget.dart';
 import 'squad/squad_widget.dart';
 import 'upskill/upskill_widget.dart';
-import 'test/test_widget.dart';
+import 'profile/profile_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -75,7 +75,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'Feeds': FeedsWidget(),
       'squad': SquadWidget(),
       'upskill': UpskillWidget(),
-      'test': TestWidget(),
+      'profile': ProfileWidget(),
     };
     return Scaffold(
       body: tabs[_currentPage],
@@ -103,11 +103,11 @@ class _NavBarPageState extends State<NavBarPage> {
             label: 'Upskill',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.tag_faces_sharp,
+            icon: FaIcon(
+              FontAwesomeIcons.userCircle,
               size: 24,
             ),
-            label: 'Test',
+            label: 'Profile',
           )
         ],
         backgroundColor: Color(0xFF262B35),

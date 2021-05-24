@@ -797,7 +797,8 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                     await Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => ProfileWidget(),
+                                        builder: (context) =>
+                                            NavBarPage(initialPage: 'profile'),
                                       ),
                                       (r) => false,
                                     );
@@ -856,7 +857,8 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                     await Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => ProfileWidget(),
+                                        builder: (context) =>
+                                            NavBarPage(initialPage: 'profile'),
                                       ),
                                     );
                                   },
