@@ -8,6 +8,7 @@ import 'feeds/feeds_widget.dart';
 import 'squad/squad_widget.dart';
 import 'upskill/upskill_widget.dart';
 import 'profile/profile_widget.dart';
+import 'test/test_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -76,6 +77,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'squad': SquadWidget(),
       'upskill': UpskillWidget(),
       'profile': ProfileWidget(),
+      'test': TestWidget(),
     };
     return Scaffold(
       body: tabs[_currentPage],
@@ -108,6 +110,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24,
             ),
             label: 'Profile',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.tag_faces_sharp,
+              color: Color(0xFF9E9E9E),
+              size: 24,
+            ),
+            label: 'Test',
           )
         ],
         backgroundColor: Color(0xFF262B35),

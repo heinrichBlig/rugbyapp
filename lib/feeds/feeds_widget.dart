@@ -33,7 +33,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
       key: scaffoldKey,
       body: SafeArea(
         child: Column(
-          mainAxisSize: MainAxisSize.max,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Stack(
               children: [
