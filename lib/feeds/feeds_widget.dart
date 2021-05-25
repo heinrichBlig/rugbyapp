@@ -58,7 +58,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            width: 264,
+                            width: 260,
                             height: 42,
                             decoration: BoxDecoration(
                               color: Colors.white,
