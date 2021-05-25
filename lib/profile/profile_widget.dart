@@ -571,7 +571,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                     options: FFButtonOptions(
                                                       width: 124,
                                                       height: 40,
-                                                      color: Color(0x00262B35),
+                                                      color: Color(0xFF262B35),
                                                       textStyle:
                                                           FlutterFlowTheme
                                                               .subtitle2
@@ -601,7 +601,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                     options: FFButtonOptions(
                                                       width: 124,
                                                       height: 40,
-                                                      color: Color(0x00262B35),
+                                                      color: Color(0xFF262B35),
                                                       textStyle:
                                                           FlutterFlowTheme
                                                               .subtitle2
