@@ -310,17 +310,6 @@ class _UserWidgetState extends State<UserWidget> {
                                                         .reference
                                                         .update(
                                                             usersRecordData);
-                                                    await Navigator
-                                                        .pushAndRemoveUntil(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            NavBarPage(
-                                                                initialPage:
-                                                                    'squad'),
-                                                      ),
-                                                      (r) => false,
-                                                    );
                                                   },
                                                   child: Row(
                                                     mainAxisSize:

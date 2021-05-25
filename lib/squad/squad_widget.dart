@@ -352,7 +352,7 @@ class _SquadWidgetState extends State<SquadWidget> {
                                                                             0),
                                                                 child:
                                                                     Container(
-                                                                  width: 113,
+                                                                  width: 100,
                                                                   height: 42,
                                                                   decoration:
                                                                       BoxDecoration(
@@ -776,11 +776,11 @@ class _SquadWidgetState extends State<SquadWidget> {
                                                                     options:
                                                                         FFButtonOptions(
                                                                       width:
-                                                                          124,
+                                                                          100,
                                                                       height:
                                                                           40,
                                                                       color: Color(
-                                                                          0x00262B35),
+                                                                          0xFF262B35),
                                                                       textStyle: FlutterFlowTheme
                                                                           .subtitle2
                                                                           .override(
@@ -816,11 +816,11 @@ class _SquadWidgetState extends State<SquadWidget> {
                                                                     options:
                                                                         FFButtonOptions(
                                                                       width:
-                                                                          124,
+                                                                          100,
                                                                       height:
                                                                           40,
                                                                       color: Color(
-                                                                          0x00262B35),
+                                                                          0xFF262B35),
                                                                       textStyle: FlutterFlowTheme
                                                                           .subtitle2
                                                                           .override(
