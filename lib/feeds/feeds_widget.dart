@@ -234,7 +234,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                        width: 210,
+                                        width: 200,
                                         height: 45,
                                         decoration: BoxDecoration(
                                           color: Color(0xE6E6E6E6),
