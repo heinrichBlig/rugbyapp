@@ -39,7 +39,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           ),
           actions: [
             Padding(
-              padding: EdgeInsets.fromLTRB(2, 2, 20, 2),
+              padding: EdgeInsets.fromLTRB(2, 2, 20, 20),
               child: IconButton(
                 onPressed: () async {
                   await signOut();
@@ -96,7 +96,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 Container(
                                   width: double.infinity,
                                   height:
-                                      MediaQuery.of(context).size.height * 0.5,
+                                      MediaQuery.of(context).size.height * 0.65,
                                   decoration: BoxDecoration(
                                     color: Color(0xFFEEEEEE),
                                   ),
@@ -267,7 +267,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                               padding: EdgeInsets.fromLTRB(
                                                   0, 0, 20, 0),
                                               child: Container(
-                                                width: 70,
+                                                width: 110,
                                                 height: 42,
                                                 decoration: BoxDecoration(
                                                   color: Color(0xE6E6E6E6),
