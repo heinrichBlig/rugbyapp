@@ -39,7 +39,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           ),
           actions: [
             Padding(
-              padding: EdgeInsets.fromLTRB(2, 2, 20, 20),
+              padding: EdgeInsets.fromLTRB(20, 2, 20, 5),
               child: IconButton(
                 onPressed: () async {
                   await signOut();
