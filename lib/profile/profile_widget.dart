@@ -160,14 +160,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                             alignment: Alignment(0, 0),
                                             child: InkWell(
                                               onTap: () async {
-                                                await Navigator
-                                                    .pushAndRemoveUntil(
+                                                await Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
                                                     builder: (context) =>
                                                         ProfileEditWidget(),
                                                   ),
-                                                  (r) => false,
                                                 );
                                               },
                                               child: TextIconButtonWidget(
