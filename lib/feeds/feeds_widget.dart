@@ -234,14 +234,14 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                        width: 220,
+                                        width: 210,
                                         height: 45,
                                         decoration: BoxDecoration(
                                           color: Color(0xE6E6E6E6),
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                              EdgeInsets.fromLTRB(2, 0, 0, 0),
                                           child: InkWell(
                                             onTap: () async {
                                               final user =
@@ -303,7 +303,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                                 .update(postsRecordData);
                                           },
                                           child: Container(
-                                            width: 149,
+                                            width: 118,
                                             height: 45,
                                             decoration: BoxDecoration(
                                               color: Colors.white,
