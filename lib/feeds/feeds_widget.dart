@@ -292,7 +292,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                       ),
                                       Padding(
                                         padding:
-                                            EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                            EdgeInsets.fromLTRB(0, 0, 1, 0),
                                         child: InkWell(
                                           onTap: () async {
                                             final postsRecordData = {
@@ -303,7 +303,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                                 .update(postsRecordData);
                                           },
                                           child: Container(
-                                            width: 118,
+                                            width: 110,
                                             height: 45,
                                             decoration: BoxDecoration(
                                               color: Colors.white,
