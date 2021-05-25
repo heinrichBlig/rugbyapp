@@ -793,14 +793,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                               children: [
                                 FFButtonWidget(
                                   onPressed: () async {
-                                    await Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            NavBarPage(initialPage: 'profile'),
-                                      ),
-                                      (r) => false,
-                                    );
+                                    Navigator.pop(context);
                                   },
                                   text: 'Cancel',
                                   options: FFButtonOptions(

@@ -4,7 +4,7 @@ import '../components/icon_only_button_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../gallary/gallary_widget.dart';
-import '../main.dart';
+import '../user/user_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -244,24 +244,12 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                               EdgeInsets.fromLTRB(2, 0, 0, 0),
                                           child: InkWell(
                                             onTap: () async {
-                                              final user =
-                                                  listViewPostsRecord.user;
-
-                                              final squadsRecordData =
-                                                  createSquadsRecordData(
-                                                user: user,
-                                              );
-
-                                              await SquadsRecord.collection
-                                                  .doc()
-                                                  .set(squadsRecordData);
                                               await Navigator
                                                   .pushAndRemoveUntil(
                                                 context,
                                                 MaterialPageRoute(
                                                   builder: (context) =>
-                                                      NavBarPage(
-                                                          initialPage: 'squad'),
+                                                      UserWidget(),
                                                 ),
                                                 (r) => false,
                                               );
@@ -303,7 +291,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                                 .update(postsRecordData);
                                           },
                                           child: Container(
-                                            width: 110,
+                                            width: 120,
                                             height: 45,
                                             decoration: BoxDecoration(
                                               color: Colors.white,

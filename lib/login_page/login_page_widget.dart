@@ -266,12 +266,30 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           ],
                         ),
                       ),
-                      Text(
-                        'Forgot Password?',
-                        style: GoogleFonts.getFont(
-                          'Lato',
-                          color: Color(0xFF676767),
-                          fontSize: 16,
+                      InkWell(
+                        onTap: () async {
+                          if (emailTextController.text.isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Email required!',
+                                ),
+                              ),
+                            );
+                            return;
+                          }
+                          await resetPassword(
+                            email: emailTextController.text,
+                            context: context,
+                          );
+                        },
+                        child: Text(
+                          'Forgot Password?',
+                          style: GoogleFonts.getFont(
+                            'Lato',
+                            color: Color(0xFF676767),
+                            fontSize: 16,
+                          ),
                         ),
                       )
                     ],

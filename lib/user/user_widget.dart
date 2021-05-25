@@ -1,87 +1,104 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/feed_and_upskill_button_widget.dart';
 import '../components/text_icon_button_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
-import '../login_page/login_page_widget.dart';
+import '../flutter_flow/flutter_flow_util.dart';
+import '../main.dart';
 import '../profile_edit/profile_edit_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ProfileWidget extends StatefulWidget {
-  ProfileWidget({Key key}) : super(key: key);
+class UserWidget extends StatefulWidget {
+  UserWidget({Key key}) : super(key: key);
 
   @override
-  _ProfileWidgetState createState() => _ProfileWidgetState();
+  _UserWidgetState createState() => _UserWidgetState();
 }
 
-class _ProfileWidgetState extends State<ProfileWidget> {
+class _UserWidgetState extends State<UserWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(118),
-        child: AppBar(
-          backgroundColor: FlutterFlowTheme.primaryColor,
-          iconTheme: IconThemeData(color: Colors.white),
-          automaticallyImplyLeading: false,
-          flexibleSpace: Padding(
-            padding: EdgeInsets.fromLTRB(20, 20, 60, 0),
-            child: Image.asset(
-              'assets/images/RUGB.APP-01.png',
-              width: 100,
-              height: 100,
-              fit: BoxFit.cover,
-            ),
-          ),
-          actions: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(20, 2, 20, 5),
-              child: IconButton(
-                onPressed: () async {
-                  await signOut();
-                  await Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LoginPageWidget(),
-                    ),
-                    (r) => false,
-                  );
-                },
-                icon: Icon(
-                  Icons.login_rounded,
-                  color: Color(0xFF49DF8B),
-                  size: 30,
-                ),
-                iconSize: 30,
-              ),
-            )
-          ],
-          elevation: 4,
-        ),
-      ),
-      backgroundColor: Color(0xFFB0AEAE),
       body: SafeArea(
         child: SingleChildScrollView(
           primary: false,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              Align(
+                alignment: Alignment(0, 0),
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(0, 9, 0, 0),
+                  child: Container(
+                    width: double.infinity,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF262B35),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(12),
+                        bottomRight: Radius.circular(12),
+                        topLeft: Radius.circular(0),
+                        topRight: Radius.circular(0),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          InkWell(
+                            onTap: () async {
+                              Navigator.pop(context);
+                            },
+                            child: Icon(
+                              Icons.arrow_back,
+                              color: FlutterFlowTheme.secondaryColor,
+                              size: 24,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                            child: Image.asset(
+                              'assets/images/RUGB.APP-01.png',
+                              width: 300,
+                              height: 180,
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    StreamBuilder<UsersRecord>(
-                      stream: UsersRecord.getDocument(currentUserReference),
+                    StreamBuilder<List<UsersRecord>>(
+                      stream: queryUsersRecord(
+                        singleRecord: true,
+                      ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
                           return Center(child: CircularProgressIndicator());
                         }
-                        final cardUsersRecord = snapshot.data;
+                        List<UsersRecord> cardUsersRecordList = snapshot.data;
+                        // Customize what your widget looks like with no query results.
+                        if (snapshot.data.isEmpty) {
+                          // return Container();
+                          // For now, we'll just include some dummy data.
+                          cardUsersRecordList =
+                              createDummyUsersRecord(count: 1);
+                        }
+                        final cardUsersRecord = cardUsersRecordList.first;
                         return Padding(
                           padding: EdgeInsets.fromLTRB(20, 20, 20, 30),
                           child: Card(
@@ -274,35 +291,69 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                   borderRadius:
                                                       BorderRadius.circular(12),
                                                 ),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsets.fromLTRB(
-                                                              0, 0, 3, 0),
-                                                      child: Icon(
-                                                        Icons.favorite_rounded,
-                                                        color: Colors.black,
-                                                        size: 24,
+                                                child: InkWell(
+                                                  onTap: () async {
+                                                    final createdTime =
+                                                        getCurrentTimestamp;
+
+                                                    final usersRecordData = {
+                                                      ...createUsersRecordData(
+                                                        createdTime:
+                                                            createdTime,
                                                       ),
-                                                    ),
-                                                    Text(
-                                                      cardUsersRecord
-                                                          .profileLike
-                                                          .toString(),
-                                                      style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontWeight:
-                                                            FontWeight.w600,
+                                                      'profile_like':
+                                                          FieldValue.increment(
+                                                              1),
+                                                    };
+
+                                                    await cardUsersRecord
+                                                        .reference
+                                                        .update(
+                                                            usersRecordData);
+                                                    await Navigator
+                                                        .pushAndRemoveUntil(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            NavBarPage(
+                                                                initialPage:
+                                                                    'squad'),
                                                       ),
-                                                    )
-                                                  ],
+                                                      (r) => false,
+                                                    );
+                                                  },
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                0, 0, 3, 0),
+                                                        child: Icon(
+                                                          Icons
+                                                              .favorite_rounded,
+                                                          color: Colors.black,
+                                                          size: 24,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        cardUsersRecord
+                                                            .profileLike
+                                                            .toString(),
+                                                        style: FlutterFlowTheme
+                                                            .bodyText1
+                                                            .override(
+                                                          fontFamily: 'Poppins',
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             )
@@ -518,17 +569,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsets.fromLTRB(0, 0, 0, 5),
-                                            child: Text(
-                                              'Player Content',
-                                              style: FlutterFlowTheme.subtitle1
-                                                  .override(
-                                                fontFamily: 'Poppins',
-                                                color: Colors.white,
-                                                fontSize: 13,
-                                              ),
+                                          Text(
+                                            'Player Content',
+                                            style: FlutterFlowTheme.subtitle1
+                                                .override(
+                                              fontFamily: 'Poppins',
+                                              color: Colors.white,
+                                              fontSize: 13,
                                             ),
                                           )
                                         ],
@@ -543,84 +590,29 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     children: [
                                       Padding(
                                         padding:
-                                            EdgeInsets.fromLTRB(5, 0, 10, 5),
-                                        child: Column(
+                                            EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                        child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
                                           children: [
-                                            Padding(
-                                              padding: EdgeInsets.fromLTRB(
-                                                  10, 0, 10, 0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  FFButtonWidget(
-                                                    onPressed: () {
-                                                      print(
-                                                          'Button pressed ...');
-                                                    },
-                                                    text: 'Feed',
-                                                    icon: Icon(
-                                                      Icons.videocam_outlined,
-                                                      size: 15,
-                                                    ),
-                                                    options: FFButtonOptions(
-                                                      width: 124,
-                                                      height: 40,
-                                                      color: Color(0x00262B35),
-                                                      textStyle:
-                                                          FlutterFlowTheme
-                                                              .subtitle2
-                                                              .override(
-                                                        fontFamily: 'Poppins',
-                                                        color: FlutterFlowTheme
-                                                            .secondaryColor,
-                                                      ),
-                                                      borderSide: BorderSide(
-                                                        color: FlutterFlowTheme
-                                                            .secondaryColor,
-                                                        width: 1,
-                                                      ),
-                                                      borderRadius: 12,
-                                                    ),
-                                                  ),
-                                                  FFButtonWidget(
-                                                    onPressed: () {
-                                                      print(
-                                                          'Button pressed ...');
-                                                    },
-                                                    text: 'Upskill',
-                                                    icon: Icon(
-                                                      Icons.videocam_outlined,
-                                                      size: 15,
-                                                    ),
-                                                    options: FFButtonOptions(
-                                                      width: 124,
-                                                      height: 40,
-                                                      color: Color(0x00262B35),
-                                                      textStyle:
-                                                          FlutterFlowTheme
-                                                              .subtitle2
-                                                              .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF151515),
-                                                      ),
-                                                      borderSide: BorderSide(
-                                                        color: Colors.black,
-                                                        width: 1,
-                                                      ),
-                                                      borderRadius: 12,
-                                                    ),
-                                                  )
-                                                ],
+                                            FeedAndUpskillButtonWidget(
+                                              text: 'RUGB Feed',
+                                              icon: Icon(
+                                                Icons.photo_library_sharp,
+                                                color: Color(0xFF49DF8B),
                                               ),
+                                              color: Color(0xFF49DF8B),
+                                            ),
+                                            FeedAndUpskillButtonWidget(
+                                              text: 'Upskill',
+                                              icon: Icon(
+                                                Icons.videocam_outlined,
+                                                color: Color(0xFF151515),
+                                              ),
+                                              color: Color(0xFF151515),
                                             )
                                           ],
                                         ),
