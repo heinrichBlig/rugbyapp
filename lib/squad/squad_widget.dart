@@ -1,4 +1,3 @@
-import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
@@ -82,47 +81,8 @@ class _SquadWidgetState extends State<SquadWidget> {
                           itemBuilder: (context, listViewIndex) {
                             final listViewSquadsRecord =
                                 listViewSquadsRecordList[listViewIndex];
-                            return Padding(
-                              padding: EdgeInsets.fromLTRB(20, 10, 2, 0),
-                              child: Container(
-                                width: MediaQuery.of(context).size.width * 0.9,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFEEEEEE),
-                                  borderRadius: BorderRadius.circular(24),
-                                ),
-                                child: StreamBuilder<UsersRecord>(
-                                  stream: UsersRecord.getDocument(
-                                      currentUserReference),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                          child: CircularProgressIndicator());
-                                    }
-                                    final columnUsersRecord = snapshot.data;
-                                    return Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(24),
-                                          child: Image.network(
-                                            columnUsersRecord.photoUrl,
-                                            width: double.infinity,
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.3,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        )
-                                      ],
-                                    );
-                                  },
-                                ),
-                              ),
-                            );
+                            return Container(
+                                width: 100, height: 100, color: Colors.green);
                           },
                         );
                       },
