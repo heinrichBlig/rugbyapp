@@ -265,7 +265,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                               padding: EdgeInsets.fromLTRB(
                                                   0, 0, 20, 0),
                                               child: Container(
-                                                width: 123,
+                                                width: 100,
                                                 height: 42,
                                                 decoration: BoxDecoration(
                                                   color: Color(0xE6E6E6E6),
