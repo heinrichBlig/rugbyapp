@@ -1,10 +1,9 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../components/feed_and_upskill_button_widget.dart';
 import '../components/text_icon_button_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../main.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
 import '../profile_edit/profile_edit_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -569,45 +568,86 @@ class _UserWidgetState extends State<UserWidget> {
                                           )
                                         ],
                                       ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(5, 0, 10, 5),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.fromLTRB(
+                                                10, 0, 10, 0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                FFButtonWidget(
+                                                  onPressed: () {
+                                                    print('Button pressed ...');
+                                                  },
+                                                  text: 'Feed',
+                                                  icon: Icon(
+                                                    Icons.videocam_outlined,
+                                                    size: 15,
+                                                  ),
+                                                  options: FFButtonOptions(
+                                                    width: 100,
+                                                    height: 40,
+                                                    color: Color(0xFF262B35),
+                                                    textStyle: FlutterFlowTheme
+                                                        .subtitle2
+                                                        .override(
+                                                      fontFamily: 'Poppins',
+                                                      color: FlutterFlowTheme
+                                                          .secondaryColor,
+                                                    ),
+                                                    borderSide: BorderSide(
+                                                      color: FlutterFlowTheme
+                                                          .secondaryColor,
+                                                      width: 1,
+                                                    ),
+                                                    borderRadius: 12,
+                                                  ),
+                                                ),
+                                                FFButtonWidget(
+                                                  onPressed: () {
+                                                    print('Button pressed ...');
+                                                  },
+                                                  text: 'Upskill',
+                                                  icon: Icon(
+                                                    Icons.videocam_outlined,
+                                                    size: 15,
+                                                  ),
+                                                  options: FFButtonOptions(
+                                                    width: 100,
+                                                    height: 40,
+                                                    color: Color(0xFF262B35),
+                                                    textStyle: FlutterFlowTheme
+                                                        .subtitle2
+                                                        .override(
+                                                      fontFamily: 'Poppins',
+                                                      color: Color(0xFF151515),
+                                                    ),
+                                                    borderSide: BorderSide(
+                                                      color: Colors.black,
+                                                      width: 1,
+                                                    ),
+                                                    borderRadius: 12,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     )
                                   ],
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(10, 0, 10, 20),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            FeedAndUpskillButtonWidget(
-                                              text: 'RUGB Feed',
-                                              icon: Icon(
-                                                Icons.photo_library_sharp,
-                                                color: Color(0xFF49DF8B),
-                                              ),
-                                              color: Color(0xFF49DF8B),
-                                            ),
-                                            FeedAndUpskillButtonWidget(
-                                              text: 'Upskill',
-                                              icon: Icon(
-                                                Icons.videocam_outlined,
-                                                color: Color(0xFF151515),
-                                              ),
-                                              color: Color(0xFF151515),
-                                            )
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ),
                                 )
                               ],
                             ),
