@@ -244,14 +244,12 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                               EdgeInsets.fromLTRB(2, 0, 0, 0),
                                           child: InkWell(
                                             onTap: () async {
-                                              await Navigator
-                                                  .pushAndRemoveUntil(
+                                              await Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
                                                   builder: (context) =>
                                                       UserWidget(),
                                                 ),
-                                                (r) => false,
                                               );
                                             },
                                             child: Row(

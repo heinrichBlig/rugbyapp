@@ -1,10 +1,9 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../components/text_icon_button_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../profile_edit/profile_edit_widget.dart';
+import '../main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -62,7 +61,7 @@ class _UserWidgetState extends State<UserWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                            padding: EdgeInsets.fromLTRB(5, 20, 20, 20),
                             child: Image.asset(
                               'assets/images/RUGB.APP-01.png',
                               width: 300,
@@ -173,26 +172,75 @@ class _UserWidgetState extends State<UserWidget> {
                                             },
                                           ),
                                           Align(
-                                            alignment: Alignment(0, 0),
-                                            child: InkWell(
-                                              onTap: () async {
-                                                await Navigator
-                                                    .pushAndRemoveUntil(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        ProfileEditWidget(),
-                                                  ),
-                                                  (r) => false,
-                                                );
-                                              },
-                                              child: TextIconButtonWidget(
-                                                text: 'Edit',
-                                                icon: Icon(
-                                                  Icons.settings,
+                                            alignment: Alignment(-0.83, -0.68),
+                                            child: Padding(
+                                              padding: EdgeInsets.fromLTRB(
+                                                  10, 20, 0, 0),
+                                              child: Container(
+                                                width: 120,
+                                                height: 40,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0x2DFFFFFF),
                                                 ),
-                                                backgroundColor:
-                                                    Color(0xE6E6E6E6),
+                                                child: StreamBuilder<
+                                                    List<UsersRecord>>(
+                                                  stream: queryUsersRecord(
+                                                    queryBuilder:
+                                                        (usersRecord) =>
+                                                            usersRecord.where(
+                                                                'validPlayer',
+                                                                isEqualTo:
+                                                                    true),
+                                                    singleRecord: true,
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                          child:
+                                                              CircularProgressIndicator());
+                                                    }
+                                                    List<UsersRecord>
+                                                        rowUsersRecordList =
+                                                        snapshot.data;
+                                                    // Customize what your widget looks like with no query results.
+                                                    if (snapshot.data.isEmpty) {
+                                                      // return Container();
+                                                      // For now, we'll just include some dummy data.
+                                                      rowUsersRecordList =
+                                                          createDummyUsersRecord(
+                                                              count: 1);
+                                                    }
+                                                    final rowUsersRecord =
+                                                        rowUsersRecordList
+                                                            .first;
+                                                    return Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Icon(
+                                                          Icons.check_circle,
+                                                          color: FlutterFlowTheme
+                                                              .secondaryColor,
+                                                          size: 24,
+                                                        ),
+                                                        Text(
+                                                          'Verified Player',
+                                                          style:
+                                                              FlutterFlowTheme
+                                                                  .bodyText1
+                                                                  .override(
+                                                            fontFamily:
+                                                                'Poppins',
+                                                            color: FlutterFlowTheme
+                                                                .secondaryColor,
+                                                            fontSize: 12,
+                                                          ),
+                                                        )
+                                                      ],
+                                                    );
+                                                  },
+                                                ),
                                               ),
                                             ),
                                           )
@@ -282,34 +330,48 @@ class _UserWidgetState extends State<UserWidget> {
                                             Padding(
                                               padding: EdgeInsets.fromLTRB(
                                                   0, 0, 20, 0),
-                                              child: Container(
-                                                width: 123,
-                                                height: 42,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0xE6E6E6E6),
-                                                  borderRadius:
-                                                      BorderRadius.circular(12),
-                                                ),
-                                                child: InkWell(
-                                                  onTap: () async {
-                                                    final createdTime =
-                                                        getCurrentTimestamp;
+                                              child: InkWell(
+                                                onTap: () async {
+                                                  final user =
+                                                      cardUsersRecord.reference;
 
-                                                    final usersRecordData = {
-                                                      ...createUsersRecordData(
-                                                        createdTime:
-                                                            createdTime,
-                                                      ),
-                                                      'profile_like':
-                                                          FieldValue.increment(
-                                                              1),
-                                                    };
+                                                  final squadsRecordData =
+                                                      createSquadsRecordData(
+                                                    user: user,
+                                                  );
 
-                                                    await cardUsersRecord
-                                                        .reference
-                                                        .update(
-                                                            usersRecordData);
-                                                  },
+                                                  await SquadsRecord.collection
+                                                      .doc()
+                                                      .set(squadsRecordData);
+                                                  final usersRecordData = {
+                                                    'profile_like':
+                                                        FieldValue.increment(1),
+                                                  };
+
+                                                  await cardUsersRecord
+                                                      .reference
+                                                      .update(usersRecordData);
+                                                  await Navigator
+                                                      .pushAndRemoveUntil(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          NavBarPage(
+                                                              initialPage:
+                                                                  'squad'),
+                                                    ),
+                                                    (r) => false,
+                                                  );
+                                                },
+                                                child: Container(
+                                                  width: 123,
+                                                  height: 42,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0xE6E6E6E6),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12),
+                                                  ),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
