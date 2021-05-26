@@ -2,8 +2,11 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/text_icon_button_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../main.dart';
 import '../profile_edit/profile_edit_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -350,56 +353,84 @@ class _SquadWidgetState extends State<SquadWidget> {
                                                                             0,
                                                                             20,
                                                                             0),
-                                                                child:
-                                                                    Container(
-                                                                  width: 100,
-                                                                  height: 42,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: Color(
-                                                                        0xE6E6E6E6),
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            12),
-                                                                  ),
-                                                                  child: Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .center,
-                                                                    children: [
-                                                                      Padding(
-                                                                        padding: EdgeInsets.fromLTRB(
-                                                                            0,
-                                                                            0,
-                                                                            3,
-                                                                            0),
-                                                                        child:
-                                                                            Icon(
-                                                                          Icons
-                                                                              .favorite_rounded,
-                                                                          color:
-                                                                              Colors.black,
-                                                                          size:
-                                                                              24,
-                                                                        ),
+                                                                child: InkWell(
+                                                                  onTap:
+                                                                      () async {
+                                                                    final usersRecordData =
+                                                                        {
+                                                                      'profile_like':
+                                                                          FieldValue.increment(
+                                                                              -1),
+                                                                    };
+
+                                                                    await listViewSquadsRecord
+                                                                        .user
+                                                                        .update(
+                                                                            usersRecordData);
+                                                                    await Navigator
+                                                                        .pushAndRemoveUntil(
+                                                                      context,
+                                                                      MaterialPageRoute(
+                                                                        builder:
+                                                                            (context) =>
+                                                                                NavBarPage(initialPage: 'squad'),
                                                                       ),
-                                                                      Text(
-                                                                        squadUsersRecord
-                                                                            .profileLike
-                                                                            .toString(),
-                                                                        style: FlutterFlowTheme
-                                                                            .bodyText1
-                                                                            .override(
-                                                                          fontFamily:
-                                                                              'Poppins',
-                                                                          fontWeight:
-                                                                              FontWeight.w600,
+                                                                      (r) =>
+                                                                          false,
+                                                                    );
+                                                                  },
+                                                                  child:
+                                                                      Container(
+                                                                    width: 100,
+                                                                    height: 42,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Color(
+                                                                          0xE6E6E6E6),
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              12),
+                                                                    ),
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding: EdgeInsets.fromLTRB(
+                                                                              0,
+                                                                              0,
+                                                                              3,
+                                                                              0),
+                                                                          child:
+                                                                              Icon(
+                                                                            Icons.favorite_rounded,
+                                                                            color:
+                                                                                FlutterFlowTheme.secondaryColor,
+                                                                            size:
+                                                                                24,
+                                                                          ),
                                                                         ),
-                                                                      )
-                                                                    ],
+                                                                        Text(
+                                                                          squadUsersRecord
+                                                                              .profileLike
+                                                                              .toString(),
+                                                                          style: FlutterFlowTheme
+                                                                              .bodyText1
+                                                                              .override(
+                                                                            fontFamily:
+                                                                                'Poppins',
+                                                                            color:
+                                                                                FlutterFlowTheme.secondaryColor,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                          ),
+                                                                        )
+                                                                      ],
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               )

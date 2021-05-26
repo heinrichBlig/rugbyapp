@@ -644,8 +644,7 @@ class _UserWidgetState extends State<UserWidget> {
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
+                                                  MainAxisAlignment.spaceAround,
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.center,
                                               children: [
@@ -681,23 +680,26 @@ class _UserWidgetState extends State<UserWidget> {
                                                   onPressed: () {
                                                     print('Button pressed ...');
                                                   },
-                                                  text: 'Upskill',
+                                                  text: 'My Upskill',
                                                   icon: Icon(
                                                     Icons.videocam_outlined,
                                                     size: 15,
                                                   ),
                                                   options: FFButtonOptions(
-                                                    width: 100,
+                                                    width: 110,
                                                     height: 40,
                                                     color: Color(0xFF262B35),
                                                     textStyle: FlutterFlowTheme
                                                         .subtitle2
                                                         .override(
                                                       fontFamily: 'Poppins',
-                                                      color: Color(0xFF151515),
+                                                      color: FlutterFlowTheme
+                                                          .secondaryColor,
+                                                      fontSize: 8,
                                                     ),
                                                     borderSide: BorderSide(
-                                                      color: Colors.black,
+                                                      color: FlutterFlowTheme
+                                                          .secondaryColor,
                                                       width: 1,
                                                     ),
                                                     borderRadius: 12,
