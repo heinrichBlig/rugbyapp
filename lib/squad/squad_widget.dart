@@ -378,6 +378,9 @@ class _SquadWidgetState extends State<SquadWidget> {
                                                                       (r) =>
                                                                           false,
                                                                     );
+                                                                    await listViewSquadsRecord
+                                                                        .reference
+                                                                        .delete();
                                                                   },
                                                                   child:
                                                                       Container(
