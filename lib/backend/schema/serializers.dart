@@ -6,6 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'users_record.dart';
 import 'posts_record.dart';
 import 'squads_record.dart';
+import 'program_record.dart';
+import 'weeks_record.dart';
 
 part 'serializers.g.dart';
 
@@ -15,6 +17,8 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   UsersRecord,
   PostsRecord,
   SquadsRecord,
+  ProgramRecord,
+  WeeksRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

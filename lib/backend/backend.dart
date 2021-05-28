@@ -7,11 +7,16 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'schema/users_record.dart';
 import 'schema/posts_record.dart';
 import 'schema/squads_record.dart';
+import 'schema/program_record.dart';
+import 'schema/weeks_record.dart';
 import 'schema/serializers.dart';
 
+export 'package:cloud_firestore/cloud_firestore.dart';
 export 'schema/users_record.dart';
 export 'schema/posts_record.dart';
 export 'schema/squads_record.dart';
+export 'schema/program_record.dart';
+export 'schema/weeks_record.dart';
 
 Stream<List<UsersRecord>> queryUsersRecord(
         {Query Function(Query) queryBuilder,
@@ -32,6 +37,20 @@ Stream<List<SquadsRecord>> querySquadsRecord(
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollection(SquadsRecord.collection, SquadsRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<ProgramRecord>> queryProgramRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(ProgramRecord.collection, ProgramRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<WeeksRecord>> queryWeeksRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(WeeksRecord.collection, WeeksRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
 Stream<List<T>> queryCollection<T>(

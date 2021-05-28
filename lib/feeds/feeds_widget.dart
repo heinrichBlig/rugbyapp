@@ -233,25 +233,26 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Container(
-                                        width: 180,
-                                        height: 45,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xE6E6E6E6),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsets.fromLTRB(2, 0, 0, 0),
-                                          child: InkWell(
-                                            onTap: () async {
-                                              await Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      UserWidget(),
-                                                ),
-                                              );
-                                            },
+                                      InkWell(
+                                        onTap: () async {
+                                          await Navigator.pushAndRemoveUntil(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  UserWidget(),
+                                            ),
+                                            (r) => false,
+                                          );
+                                        },
+                                        child: Container(
+                                          width: 180,
+                                          height: 45,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xE6E6E6E6),
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsets.fromLTRB(2, 0, 0, 0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
