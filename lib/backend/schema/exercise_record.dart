@@ -23,8 +23,8 @@ abstract class ExerciseRecord
   int get set;
 
   @nullable
-  @BuiltValueField(wireName: 'video_url')
-  String get videoUrl;
+  @BuiltValueField(wireName: 'video_path')
+  String get videoPath;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -34,7 +34,7 @@ abstract class ExerciseRecord
     ..reps = 0
     ..rest = 0
     ..set = 0
-    ..videoUrl = '';
+    ..videoPath = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('exercise');
@@ -52,7 +52,7 @@ Map<String, dynamic> createExerciseRecordData({
   int reps,
   int rest,
   int set,
-  String videoUrl,
+  String videoPath,
 }) =>
     serializers.serializeWith(
         ExerciseRecord.serializer,
@@ -60,14 +60,14 @@ Map<String, dynamic> createExerciseRecordData({
           ..reps = reps
           ..rest = rest
           ..set = set
-          ..videoUrl = videoUrl));
+          ..videoPath = videoPath));
 
 ExerciseRecord get dummyExerciseRecord {
   final builder = ExerciseRecordBuilder()
     ..reps = dummyInteger
     ..rest = dummyInteger
     ..set = dummyInteger
-    ..videoUrl = dummyVideoPath;
+    ..videoPath = dummyVideoPath;
   return builder.build();
 }
 

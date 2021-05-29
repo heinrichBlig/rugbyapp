@@ -198,7 +198,7 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                       child: FlutterFlowVideoPlayer(
-                        path: columnExerciseRecord.videoUrl,
+                        path: columnExerciseRecord.videoPath,
                         videoType: VideoType.network,
                         width: double.infinity,
                         autoPlay: false,
