@@ -59,7 +59,7 @@ class _WeeksWidgetState extends State<WeeksWidget> {
                           padding: EdgeInsets.fromLTRB(5, 20, 20, 20),
                           child: Image.asset(
                             'assets/images/RUGB.APP-01.png',
-                            width: 280,
+                            width: 250,
                             height: 170,
                             fit: BoxFit.cover,
                           ),
@@ -226,12 +226,19 @@ class _WeeksWidgetState extends State<WeeksWidget> {
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         listViewWeeksRecord.weekName,
                                         style: FlutterFlowTheme.title3.override(
                                           fontFamily: 'Poppins',
                                         ),
+                                      ),
+                                      Icon(
+                                        Icons.lock,
+                                        color: Colors.black,
+                                        size: 24,
                                       )
                                     ],
                                   )

@@ -9,6 +9,7 @@ import 'schema/posts_record.dart';
 import 'schema/squads_record.dart';
 import 'schema/program_record.dart';
 import 'schema/weeks_record.dart';
+import 'schema/exercise_record.dart';
 import 'schema/serializers.dart';
 
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,6 +18,7 @@ export 'schema/posts_record.dart';
 export 'schema/squads_record.dart';
 export 'schema/program_record.dart';
 export 'schema/weeks_record.dart';
+export 'schema/exercise_record.dart';
 
 Stream<List<UsersRecord>> queryUsersRecord(
         {Query Function(Query) queryBuilder,
@@ -51,6 +53,13 @@ Stream<List<WeeksRecord>> queryWeeksRecord(
         int limit = -1,
         bool singleRecord = false}) =>
     queryCollection(WeeksRecord.collection, WeeksRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Stream<List<ExerciseRecord>> queryExerciseRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(ExerciseRecord.collection, ExerciseRecord.serializer,
         queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
 
 Stream<List<T>> queryCollection<T>(

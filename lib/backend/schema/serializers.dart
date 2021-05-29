@@ -8,6 +8,7 @@ import 'posts_record.dart';
 import 'squads_record.dart';
 import 'program_record.dart';
 import 'weeks_record.dart';
+import 'exercise_record.dart';
 
 part 'serializers.g.dart';
 
@@ -19,6 +20,7 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   SquadsRecord,
   ProgramRecord,
   WeeksRecord,
+  ExerciseRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())
