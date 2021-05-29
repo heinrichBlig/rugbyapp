@@ -76,7 +76,7 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
                               padding: EdgeInsets.fromLTRB(5, 20, 20, 20),
                               child: Image.asset(
                                 'assets/images/RUGB.APP-01.png',
-                                width: 300,
+                                width: 250,
                                 height: 180,
                                 fit: BoxFit.cover,
                               ),

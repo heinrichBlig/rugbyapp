@@ -1,6 +1,7 @@
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../weeks/weeks_widget.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -253,7 +254,8 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                                                             0,
                                                                             0,
                                                                             0),
-                                                                child: Text(
+                                                                child:
+                                                                    AutoSizeText(
                                                                   listViewWeeksRecord
                                                                       .description,
                                                                   style: FlutterFlowTheme
