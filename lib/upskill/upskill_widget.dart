@@ -150,7 +150,7 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                               height: MediaQuery.of(context)
                                                       .size
                                                       .height *
-                                                  0.3,
+                                                  0.4,
                                               decoration: BoxDecoration(
                                                 color: Color(0x00EEEEEE),
                                               ),
@@ -175,12 +175,19 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                                   ),
                                                   child: Stack(
                                                     children: [
-                                                      Image.network(
-                                                        listViewWeeksRecord
-                                                            .backgroundimg,
-                                                        width: double.infinity,
-                                                        height: double.infinity,
-                                                        fit: BoxFit.cover,
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                0, 0, 0, 2),
+                                                        child: Image.network(
+                                                          listViewWeeksRecord
+                                                              .backgroundimg,
+                                                          width:
+                                                              double.infinity,
+                                                          height:
+                                                              double.infinity,
+                                                          fit: BoxFit.cover,
+                                                        ),
                                                       ),
                                                       Padding(
                                                         padding:
@@ -188,7 +195,7 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                                                 10, 10, 10, 10),
                                                         child: Column(
                                                           mainAxisSize:
-                                                              MainAxisSize.max,
+                                                              MainAxisSize.min,
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
                                                                   .spaceBetween,
@@ -262,7 +269,7 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                                                           3,
                                                                           0,
                                                                           0,
-                                                                          0),
+                                                                          20),
                                                                   child:
                                                                       AutoSizeText(
                                                                     listViewWeeksRecord
