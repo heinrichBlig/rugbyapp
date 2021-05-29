@@ -1,3 +1,4 @@
+import '../backend/backend.dart';
 import '../exercise/exercise_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
@@ -58,8 +59,8 @@ class _WeeksWidgetState extends State<WeeksWidget> {
                           padding: EdgeInsets.fromLTRB(5, 20, 20, 20),
                           child: Image.asset(
                             'assets/images/RUGB.APP-01.png',
-                            width: 300,
-                            height: 180,
+                            width: 280,
+                            height: 170,
                             fit: BoxFit.cover,
                           ),
                         )
@@ -72,136 +73,177 @@ class _WeeksWidgetState extends State<WeeksWidget> {
             Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Container(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.35,
-                  decoration: BoxDecoration(
-                    color: Color(0xC0000000),
+                StreamBuilder<List<WeeksRecord>>(
+                  stream: queryWeeksRecord(
+                    singleRecord: true,
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(1, 10, 1, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'HEADING A',
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Container(
-                                width: 90,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF151515),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                                  child: Text(
-                                    'ADVANCED',
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    List<WeeksRecord> containerWeeksRecordList = snapshot.data;
+                    // Customize what your widget looks like with no query results.
+                    if (snapshot.data.isEmpty) {
+                      // return Container();
+                      // For now, we'll just include some dummy data.
+                      containerWeeksRecordList =
+                          createDummyWeeksRecord(count: 1);
+                    }
+                    final containerWeeksRecord = containerWeeksRecordList.first;
+                    return Container(
+                      width: double.infinity,
+                      height: MediaQuery.of(context).size.height * 0.35,
+                      decoration: BoxDecoration(
+                        color: Color(0xC0000000),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(1, 10, 1, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    containerWeeksRecord.headingTop,
                                     style: FlutterFlowTheme.bodyText1.override(
                                       fontFamily: 'Poppins',
                                       color: Colors.white,
                                     ),
                                   ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(1, 0, 0, 0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '5 Week: Description Here',
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.subtitle1.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                ),
+                                  Container(
+                                    width: 90,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFF151515),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                                      child: Text(
+                                        containerWeeksRecord.difficulty,
+                                        style:
+                                            FlutterFlowTheme.bodyText1.override(
+                                          fontFamily: 'Poppins',
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
                               ),
-                              Text(
-                                'Hello WorldLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exercitation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.',
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                ),
-                              )
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(1, 0, 0, 0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    containerWeeksRecord.weekName,
+                                    textAlign: TextAlign.start,
+                                    style: FlutterFlowTheme.subtitle1.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Text(
+                                    containerWeeksRecord.description,
+                                    style: FlutterFlowTheme.bodyText1.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  },
                 )
               ],
             ),
             Expanded(
-              child: ListView(
-                padding: EdgeInsets.zero,
-                scrollDirection: Axis.vertical,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                    child: InkWell(
-                      onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ExerciseWidget(),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        height: 71,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '7 workouts',
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
-                                  color: Color(0xBA000000),
-                                ),
+              child: StreamBuilder<List<WeeksRecord>>(
+                stream: queryWeeksRecord(),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  List<WeeksRecord> listViewWeeksRecordList = snapshot.data;
+                  // Customize what your widget looks like with no query results.
+                  if (snapshot.data.isEmpty) {
+                    // return Container();
+                    // For now, we'll just include some dummy data.
+                    listViewWeeksRecordList = createDummyWeeksRecord(count: 4);
+                  }
+                  return ListView.builder(
+                    padding: EdgeInsets.zero,
+                    scrollDirection: Axis.vertical,
+                    itemCount: listViewWeeksRecordList.length,
+                    itemBuilder: (context, listViewIndex) {
+                      final listViewWeeksRecord =
+                          listViewWeeksRecordList[listViewIndex];
+                      return Padding(
+                        padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                        child: InkWell(
+                          onTap: () async {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ExerciseWidget(),
                               ),
-                              Row(
+                            );
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: 71,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                              child: Column(
                                 mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'WEEK 01',
-                                    style: FlutterFlowTheme.title3.override(
+                                    '7 workouts',
+                                    style: FlutterFlowTheme.bodyText1.override(
                                       fontFamily: 'Poppins',
+                                      color: Color(0xBA000000),
                                     ),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        listViewWeeksRecord.weekName,
+                                        style: FlutterFlowTheme.title3.override(
+                                          fontFamily: 'Poppins',
+                                        ),
+                                      )
+                                    ],
                                   )
                                 ],
-                              )
-                            ],
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  )
-                ],
+                      );
+                    },
+                  );
+                },
               ),
             )
           ],

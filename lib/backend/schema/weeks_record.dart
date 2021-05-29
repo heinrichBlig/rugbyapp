@@ -21,16 +21,19 @@ abstract class WeeksRecord implements Built<WeeksRecord, WeeksRecordBuilder> {
   String get difficulty;
 
   @nullable
-  String get headinga;
-
-  @nullable
   bool get locked;
 
   @nullable
-  String get weekname;
+  @BuiltValueField(wireName: 'program_name')
+  DocumentReference get programName;
 
   @nullable
-  DocumentReference get program;
+  @BuiltValueField(wireName: 'week_name')
+  String get weekName;
+
+  @nullable
+  @BuiltValueField(wireName: 'heading_top')
+  String get headingTop;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -40,9 +43,9 @@ abstract class WeeksRecord implements Built<WeeksRecord, WeeksRecordBuilder> {
     ..backgroundimg = ''
     ..description = ''
     ..difficulty = ''
-    ..headinga = ''
     ..locked = false
-    ..weekname = '';
+    ..weekName = ''
+    ..headingTop = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('weeks');
@@ -60,10 +63,10 @@ Map<String, dynamic> createWeeksRecordData({
   String backgroundimg,
   String description,
   String difficulty,
-  String headinga,
   bool locked,
-  String weekname,
-  DocumentReference program,
+  DocumentReference programName,
+  String weekName,
+  String headingTop,
 }) =>
     serializers.serializeWith(
         WeeksRecord.serializer,
@@ -71,19 +74,19 @@ Map<String, dynamic> createWeeksRecordData({
           ..backgroundimg = backgroundimg
           ..description = description
           ..difficulty = difficulty
-          ..headinga = headinga
           ..locked = locked
-          ..weekname = weekname
-          ..program = program));
+          ..programName = programName
+          ..weekName = weekName
+          ..headingTop = headingTop));
 
 WeeksRecord get dummyWeeksRecord {
   final builder = WeeksRecordBuilder()
     ..backgroundimg = dummyImagePath
     ..description = dummyString
     ..difficulty = dummyString
-    ..headinga = dummyString
     ..locked = dummyBoolean
-    ..weekname = dummyString;
+    ..weekName = dummyString
+    ..headingTop = dummyString;
   return builder.build();
 }
 
