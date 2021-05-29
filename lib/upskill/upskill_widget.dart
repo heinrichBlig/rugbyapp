@@ -254,6 +254,8 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                                                         .override(
                                                                       fontFamily:
                                                                           'Poppins',
+                                                                      color: Colors
+                                                                          .white,
                                                                     ),
                                                                   ),
                                                                   Text(
@@ -264,6 +266,8 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                                                         .override(
                                                                       fontFamily:
                                                                           'Poppins',
+                                                                      color: Colors
+                                                                          .white,
                                                                     ),
                                                                   ),
                                                                   Padding(
@@ -282,6 +286,8 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                                                           .override(
                                                                         fontFamily:
                                                                             'Poppins',
+                                                                        color: Colors
+                                                                            .white,
                                                                         fontSize:
                                                                             10,
                                                                       ),
