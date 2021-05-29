@@ -127,7 +127,7 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                     }
                                     return ListView.builder(
                                       padding: EdgeInsets.zero,
-                                      scrollDirection: Axis.horizontal,
+                                      scrollDirection: Axis.vertical,
                                       itemCount: listViewWeeksRecordList.length,
                                       itemBuilder: (context, listViewIndex) {
                                         final listViewWeeksRecord =
@@ -141,7 +141,7 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                                     .size
                                                     .width *
                                                 0.9,
-                                            height: 200,
+                                            height: 300,
                                             decoration: BoxDecoration(
                                               color: Color(0x00EEEEEE),
                                             ),
