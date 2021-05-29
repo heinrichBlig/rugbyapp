@@ -92,7 +92,7 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                       return Padding(
                         padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
                         child: Container(
-                          width: 100,
+                          width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * 0.2,
                           decoration: BoxDecoration(
                             color: Color(0xFFEEEEEE),
@@ -130,7 +130,9 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                       }
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,
-                                        scrollDirection: Axis.vertical,
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.horizontal,
                                         itemCount:
                                             listViewWeeksRecordList.length,
                                         itemBuilder: (context, listViewIndex) {
@@ -142,10 +144,9 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                                 10, 0, 0, 0),
                                             child: Container(
                                               width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.9,
-                                              height: 100,
+                                                  .size
+                                                  .width,
+                                              height: 120,
                                               decoration: BoxDecoration(
                                                 color: Color(0x00EEEEEE),
                                               ),
