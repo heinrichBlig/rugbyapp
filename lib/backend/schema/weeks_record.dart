@@ -30,6 +30,9 @@ abstract class WeeksRecord implements Built<WeeksRecord, WeeksRecordBuilder> {
   String get weekname;
 
   @nullable
+  DocumentReference get program;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -60,6 +63,7 @@ Map<String, dynamic> createWeeksRecordData({
   String headinga,
   bool locked,
   String weekname,
+  DocumentReference program,
 }) =>
     serializers.serializeWith(
         WeeksRecord.serializer,
@@ -69,7 +73,8 @@ Map<String, dynamic> createWeeksRecordData({
           ..difficulty = difficulty
           ..headinga = headinga
           ..locked = locked
-          ..weekname = weekname));
+          ..weekname = weekname
+          ..program = program));
 
 WeeksRecord get dummyWeeksRecord {
   final builder = WeeksRecordBuilder()
