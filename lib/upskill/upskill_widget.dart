@@ -89,175 +89,154 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                     itemBuilder: (context, listViewIndex) {
                       final listViewProgramRecord =
                           listViewProgramRecordList[listViewIndex];
-                      return Container(
-                        width: 100,
-                        height: MediaQuery.of(context).size.height * 0.2,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFEEEEEE),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                listViewProgramRecord.programname,
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Poppins',
+                      return Padding(
+                        padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        child: Container(
+                          width: 100,
+                          height: MediaQuery.of(context).size.height * 0.2,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFEEEEEE),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  listViewProgramRecord.programname,
+                                  style: FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Poppins',
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: StreamBuilder<List<WeeksRecord>>(
-                                  stream: queryWeeksRecord(),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                          child: CircularProgressIndicator());
-                                    }
-                                    List<WeeksRecord> listViewWeeksRecordList =
-                                        snapshot.data;
-                                    // Customize what your widget looks like with no query results.
-                                    if (snapshot.data.isEmpty) {
-                                      // return Container();
-                                      // For now, we'll just include some dummy data.
-                                      listViewWeeksRecordList =
-                                          createDummyWeeksRecord(count: 4);
-                                    }
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: listViewWeeksRecordList.length,
-                                      itemBuilder: (context, listViewIndex) {
-                                        final listViewWeeksRecord =
-                                            listViewWeeksRecordList[
-                                                listViewIndex];
-                                        return Padding(
-                                          padding:
-                                              EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.9,
-                                            height: 300,
-                                            decoration: BoxDecoration(
-                                              color: Color(0x00EEEEEE),
-                                            ),
-                                            child: InkWell(
-                                              onTap: () async {
-                                                await Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        WeeksWidget(),
+                                Expanded(
+                                  child: StreamBuilder<List<WeeksRecord>>(
+                                    stream: queryWeeksRecord(),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                            child: CircularProgressIndicator());
+                                      }
+                                      List<WeeksRecord>
+                                          listViewWeeksRecordList =
+                                          snapshot.data;
+                                      // Customize what your widget looks like with no query results.
+                                      if (snapshot.data.isEmpty) {
+                                        // return Container();
+                                        // For now, we'll just include some dummy data.
+                                        listViewWeeksRecordList =
+                                            createDummyWeeksRecord(count: 4);
+                                      }
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount:
+                                            listViewWeeksRecordList.length,
+                                        itemBuilder: (context, listViewIndex) {
+                                          final listViewWeeksRecord =
+                                              listViewWeeksRecordList[
+                                                  listViewIndex];
+                                          return Padding(
+                                            padding: EdgeInsets.fromLTRB(
+                                                10, 0, 0, 0),
+                                            child: Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.9,
+                                              height: 100,
+                                              decoration: BoxDecoration(
+                                                color: Color(0x00EEEEEE),
+                                              ),
+                                              child: InkWell(
+                                                onTap: () async {
+                                                  await Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          WeeksWidget(),
+                                                    ),
+                                                  );
+                                                },
+                                                child: Card(
+                                                  clipBehavior: Clip
+                                                      .antiAliasWithSaveLayer,
+                                                  color: Color(0xFFF5F5F5),
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12),
                                                   ),
-                                                );
-                                              },
-                                              child: Card(
-                                                clipBehavior:
-                                                    Clip.antiAliasWithSaveLayer,
-                                                color: Color(0xFFF5F5F5),
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(12),
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsets.fromLTRB(
-                                                      10, 10, 10, 10),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Container(
-                                                        width: 90,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color:
-                                                              Color(0xFF151515),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(10),
-                                                        ),
-                                                        child: Padding(
-                                                          padding: EdgeInsets
-                                                              .fromLTRB(
-                                                                  5, 5, 5, 5),
-                                                          child: Text(
-                                                            listViewWeeksRecord
-                                                                .difficulty,
-                                                            style:
-                                                                FlutterFlowTheme
-                                                                    .bodyText1
-                                                                    .override(
-                                                              fontFamily:
-                                                                  'Poppins',
-                                                              color:
-                                                                  Colors.white,
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsets.fromLTRB(
+                                                            10, 10, 10, 10),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Container(
+                                                          width: 90,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: Color(
+                                                                0xFF151515),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10),
+                                                          ),
+                                                          child: Padding(
+                                                            padding: EdgeInsets
+                                                                .fromLTRB(
+                                                                    5, 5, 5, 5),
+                                                            child: Text(
+                                                              listViewWeeksRecord
+                                                                  .difficulty,
+                                                              style:
+                                                                  FlutterFlowTheme
+                                                                      .bodyText1
+                                                                      .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
-                                                      Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            '',
-                                                            style:
-                                                                FlutterFlowTheme
-                                                                    .bodyText1
-                                                                    .override(
-                                                              fontFamily:
-                                                                  'Poppins',
+                                                        Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              '',
+                                                              style:
+                                                                  FlutterFlowTheme
+                                                                      .bodyText1
+                                                                      .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                              ),
                                                             ),
-                                                          ),
-                                                          Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Text(
-                                                                listViewWeeksRecord
-                                                                    .weekName,
-                                                                style: FlutterFlowTheme
-                                                                    .bodyText1
-                                                                    .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                ':',
-                                                                style: FlutterFlowTheme
-                                                                    .bodyText1
-                                                                    .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsets
-                                                                        .fromLTRB(
-                                                                            3,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                child:
-                                                                    AutoSizeText(
+                                                            Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Text(
                                                                   listViewWeeksRecord
-                                                                      .description,
+                                                                      .weekName,
                                                                   style: FlutterFlowTheme
                                                                       .bodyText1
                                                                       .override(
@@ -265,24 +244,52 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                                                         'Poppins',
                                                                   ),
                                                                 ),
-                                                              )
-                                                            ],
-                                                          )
-                                                        ],
-                                                      )
-                                                    ],
+                                                                Text(
+                                                                  ':',
+                                                                  style: FlutterFlowTheme
+                                                                      .bodyText1
+                                                                      .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsets
+                                                                      .fromLTRB(
+                                                                          3,
+                                                                          0,
+                                                                          0,
+                                                                          0),
+                                                                  child:
+                                                                      AutoSizeText(
+                                                                    listViewWeeksRecord
+                                                                        .description,
+                                                                    style: FlutterFlowTheme
+                                                                        .bodyText1
+                                                                        .override(
+                                                                      fontFamily:
+                                                                          'Poppins',
+                                                                    ),
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            )
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
-                                ),
-                              )
-                            ],
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       );
