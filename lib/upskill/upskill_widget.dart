@@ -150,7 +150,7 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                               height: MediaQuery.of(context)
                                                       .size
                                                       .height *
-                                                  0.2,
+                                                  0.3,
                                               decoration: BoxDecoration(
                                                 color: Color(0x00EEEEEE),
                                               ),
