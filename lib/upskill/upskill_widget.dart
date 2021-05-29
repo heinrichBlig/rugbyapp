@@ -1,5 +1,6 @@
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
+import '../weeks/weeks_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -106,131 +107,110 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                 ),
                               ),
                               Expanded(
-                                child: StreamBuilder<List<WeeksRecord>>(
-                                  stream: queryWeeksRecord(
-                                    queryBuilder: (weeksRecord) =>
-                                        weeksRecord.where('program',
-                                            isEqualTo: listViewProgramRecord
-                                                .reference),
-                                  ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                          child: CircularProgressIndicator());
-                                    }
-                                    List<WeeksRecord> listViewWeeksRecordList =
-                                        snapshot.data;
-                                    // Customize what your widget looks like with no query results.
-                                    if (snapshot.data.isEmpty) {
-                                      // return Container();
-                                      // For now, we'll just include some dummy data.
-                                      listViewWeeksRecordList =
-                                          createDummyWeeksRecord(count: 4);
-                                    }
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      scrollDirection: Axis.horizontal,
-                                      itemCount: listViewWeeksRecordList.length,
-                                      itemBuilder: (context, listViewIndex) {
-                                        final listViewWeeksRecord =
-                                            listViewWeeksRecordList[
-                                                listViewIndex];
-                                        return Padding(
-                                          padding:
-                                              EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
+                                child: ListView(
+                                  padding: EdgeInsets.zero,
+                                  scrollDirection: Axis.horizontal,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
                                                 0.9,
-                                            height: 179,
-                                            decoration: BoxDecoration(
-                                              color: Color(0x00EEEEEE),
-                                            ),
-                                            child: Card(
-                                              clipBehavior:
-                                                  Clip.antiAliasWithSaveLayer,
-                                              color: Color(0xFFF5F5F5),
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsets.fromLTRB(
-                                                    10, 10, 10, 10),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      listViewWeeksRecord
-                                                          .difficulty,
-                                                      style: FlutterFlowTheme
-                                                          .bodyText1
-                                                          .override(
-                                                        fontFamily: 'Poppins',
-                                                      ),
-                                                    ),
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          listViewWeeksRecord
-                                                              .headinga,
-                                                          style:
-                                                              FlutterFlowTheme
-                                                                  .bodyText1
-                                                                  .override(
-                                                            fontFamily:
-                                                                'Poppins',
-                                                          ),
+                                        height: 179,
+                                        decoration: BoxDecoration(
+                                          color: Color(0x00EEEEEE),
+                                        ),
+                                        child: StreamBuilder<List<WeeksRecord>>(
+                                          stream: queryWeeksRecord(
+                                            singleRecord: true,
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                  child:
+                                                      CircularProgressIndicator());
+                                            }
+                                            List<WeeksRecord>
+                                                cardWeeksRecordList =
+                                                snapshot.data;
+                                            // Customize what your widget looks like with no query results.
+                                            if (snapshot.data.isEmpty) {
+                                              // return Container();
+                                              // For now, we'll just include some dummy data.
+                                              cardWeeksRecordList =
+                                                  createDummyWeeksRecord(
+                                                      count: 1);
+                                            }
+                                            final cardWeeksRecord =
+                                                cardWeeksRecordList.first;
+                                            return InkWell(
+                                              onTap: () async {
+                                                await Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        WeeksWidget(),
+                                                  ),
+                                                );
+                                              },
+                                              child: Card(
+                                                clipBehavior:
+                                                    Clip.antiAliasWithSaveLayer,
+                                                color: Color(0xFFF5F5F5),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsets.fromLTRB(
+                                                      10, 10, 10, 10),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        cardWeeksRecord
+                                                            .difficulty,
+                                                        style: FlutterFlowTheme
+                                                            .bodyText1
+                                                            .override(
+                                                          fontFamily: 'Poppins',
                                                         ),
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Text(
-                                                              listViewWeeksRecord
-                                                                  .weekname,
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                              ),
+                                                      ),
+                                                      Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            cardWeeksRecord
+                                                                .headinga,
+                                                            style:
+                                                                FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                              fontFamily:
+                                                                  'Poppins',
                                                             ),
-                                                            Text(
-                                                              ':',
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                              ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .fromLTRB(
-                                                                          3,
-                                                                          0,
-                                                                          0,
-                                                                          0),
-                                                              child: Text(
-                                                                listViewWeeksRecord
-                                                                    .description,
+                                                          ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Text(
+                                                                cardWeeksRecord
+                                                                    .weekname,
                                                                 style: FlutterFlowTheme
                                                                     .bodyText1
                                                                     .override(
@@ -238,20 +218,48 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                                                       'Poppins',
                                                                 ),
                                                               ),
-                                                            )
-                                                          ],
-                                                        )
-                                                      ],
-                                                    )
-                                                  ],
+                                                              Text(
+                                                                ':',
+                                                                style: FlutterFlowTheme
+                                                                    .bodyText1
+                                                                    .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .fromLTRB(
+                                                                            3,
+                                                                            0,
+                                                                            0,
+                                                                            0),
+                                                                child: Text(
+                                                                  cardWeeksRecord
+                                                                      .description,
+                                                                  style: FlutterFlowTheme
+                                                                      .bodyText1
+                                                                      .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                  ),
+                                                                ),
+                                                              )
+                                                            ],
+                                                          )
+                                                        ],
+                                                      )
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    )
+                                  ],
                                 ),
                               )
                             ],
