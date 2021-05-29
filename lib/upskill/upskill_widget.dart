@@ -93,7 +93,7 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                         padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
                         child: Container(
                           width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height * 0.27,
+                          height: MediaQuery.of(context).size.height * 0.3,
                           decoration: BoxDecoration(
                             color: Color(0xFFEEEEEE),
                           ),
