@@ -173,89 +173,84 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                                         BorderRadius.circular(
                                                             12),
                                                   ),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsets.fromLTRB(
-                                                            10, 10, 10, 10),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Container(
-                                                          width: 90,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: Color(
-                                                                0xFF151515),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10),
-                                                          ),
-                                                          child: Padding(
-                                                            padding: EdgeInsets
-                                                                .fromLTRB(
-                                                                    5, 5, 5, 5),
-                                                            child: Text(
-                                                              listViewWeeksRecord
-                                                                  .difficulty,
-                                                              style:
-                                                                  FlutterFlowTheme
-                                                                      .bodyText1
-                                                                      .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: Colors
-                                                                    .white,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Column(
+                                                  child: Stack(
+                                                    children: [
+                                                      Image.network(
+                                                        listViewWeeksRecord
+                                                            .backgroundimg,
+                                                        width: double.infinity,
+                                                        height: double.infinity,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsets.fromLTRB(
+                                                                10, 10, 10, 10),
+                                                        child: Column(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
                                                           crossAxisAlignment:
                                                               CrossAxisAlignment
                                                                   .start,
                                                           children: [
-                                                            Text(
-                                                              '',
-                                                              style:
-                                                                  FlutterFlowTheme
+                                                            Container(
+                                                              width: 90,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Color(
+                                                                    0xFF151515),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            10),
+                                                              ),
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .fromLTRB(
+                                                                            5,
+                                                                            5,
+                                                                            5,
+                                                                            5),
+                                                                child: Text(
+                                                                  listViewWeeksRecord
+                                                                      .difficulty,
+                                                                  style: FlutterFlowTheme
                                                                       .bodyText1
                                                                       .override(
-                                                                fontFamily:
-                                                                    'Poppins',
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: Colors
+                                                                        .white,
+                                                                  ),
+                                                                ),
                                                               ),
                                                             ),
-                                                            Row(
+                                                            Column(
                                                               mainAxisSize:
                                                                   MainAxisSize
-                                                                      .min,
+                                                                      .max,
                                                               crossAxisAlignment:
                                                                   CrossAxisAlignment
                                                                       .start,
                                                               children: [
                                                                 Text(
-                                                                  listViewWeeksRecord
-                                                                      .weekName,
+                                                                  '',
                                                                   style: FlutterFlowTheme
-                                                                      .bodyText1
+                                                                      .subtitle1
                                                                       .override(
                                                                     fontFamily:
                                                                         'Poppins',
                                                                   ),
                                                                 ),
                                                                 Text(
-                                                                  ':',
+                                                                  listViewWeeksRecord
+                                                                      .weekName,
                                                                   style: FlutterFlowTheme
-                                                                      .bodyText1
+                                                                      .subtitle2
                                                                       .override(
                                                                     fontFamily:
                                                                         'Poppins',
@@ -283,9 +278,9 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                                               ],
                                                             )
                                                           ],
-                                                        )
-                                                      ],
-                                                    ),
+                                                        ),
+                                                      )
+                                                    ],
                                                   ),
                                                 ),
                                               ),
