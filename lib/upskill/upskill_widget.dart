@@ -144,9 +144,13 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                                 10, 0, 0, 0),
                                             child: Container(
                                               width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              height: 120,
+                                                      .size
+                                                      .width *
+                                                  0.7,
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.2,
                                               decoration: BoxDecoration(
                                                 color: Color(0x00EEEEEE),
                                               ),
@@ -175,7 +179,7 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                                             10, 10, 10, 10),
                                                     child: Column(
                                                       mainAxisSize:
-                                                          MainAxisSize.max,
+                                                          MainAxisSize.min,
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
                                                               .spaceBetween,
@@ -233,7 +237,10 @@ class _UpskillWidgetState extends State<UpskillWidget> {
                                                             Row(
                                                               mainAxisSize:
                                                                   MainAxisSize
-                                                                      .max,
+                                                                      .min,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
                                                               children: [
                                                                 Text(
                                                                   listViewWeeksRecord
