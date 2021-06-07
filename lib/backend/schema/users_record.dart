@@ -66,6 +66,10 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   String get nickName;
 
   @nullable
+  @BuiltValueField(wireName: 'phone_number')
+  String get phoneNumber;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -84,7 +88,8 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..bio = ''
     ..age = 0
     ..profileLike = 0
-    ..nickName = '';
+    ..nickName = ''
+    ..phoneNumber = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -115,6 +120,7 @@ Map<String, dynamic> createUsersRecordData({
   int age,
   int profileLike,
   String nickName,
+  String phoneNumber,
 }) =>
     serializers.serializeWith(
         UsersRecord.serializer,
@@ -134,7 +140,8 @@ Map<String, dynamic> createUsersRecordData({
           ..bio = bio
           ..age = age
           ..profileLike = profileLike
-          ..nickName = nickName));
+          ..nickName = nickName
+          ..phoneNumber = phoneNumber));
 
 UsersRecord get dummyUsersRecord {
   final builder = UsersRecordBuilder()
@@ -153,7 +160,8 @@ UsersRecord get dummyUsersRecord {
     ..bio = dummyString
     ..age = dummyInteger
     ..profileLike = dummyInteger
-    ..nickName = dummyString;
+    ..nickName = dummyString
+    ..phoneNumber = dummyString;
   return builder.build();
 }
 
