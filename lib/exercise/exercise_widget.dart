@@ -1,7 +1,6 @@
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_video_player.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -196,19 +195,11 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
                       color: Color(0xFFEEEEEE),
                       borderRadius: BorderRadius.circular(24),
                     ),
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      child: FlutterFlowVideoPlayer(
-                        path:
-                            'https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4',
-                        videoType: VideoType.network,
-                        width: double.infinity,
-                        autoPlay: false,
-                        looping: false,
-                        showControls: true,
-                        allowFullScreen: true,
-                        allowPlaybackSpeedMenu: true,
-                      ),
+                    child: Image.network(
+                      'https://picsum.photos/seed/614/600',
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
