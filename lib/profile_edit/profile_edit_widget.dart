@@ -170,7 +170,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                           ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Colors.transparent,
+                                              color: Color(0x00000000),
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -181,7 +181,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                           ),
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Colors.transparent,
+                                              color: Color(0x00000000),
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -237,7 +237,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                           ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Colors.transparent,
+                                              color: Color(0x00000000),
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -248,7 +248,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                           ),
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Colors.transparent,
+                                              color: Color(0x00000000),
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -304,7 +304,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                           ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Colors.transparent,
+                                              color: Color(0x00000000),
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -315,7 +315,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                           ),
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Colors.transparent,
+                                              color: Color(0x00000000),
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -371,7 +371,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                           ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Colors.transparent,
+                                              color: Color(0x00000000),
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -382,7 +382,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                           ),
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Colors.transparent,
+                                              color: Color(0x00000000),
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -447,7 +447,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                                 enabledBorder:
                                                     UnderlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: Colors.transparent,
+                                                    color: Color(0x00000000),
                                                     width: 1,
                                                   ),
                                                   borderRadius:
@@ -461,7 +461,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                                 focusedBorder:
                                                     UnderlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: Colors.transparent,
+                                                    color: Color(0x00000000),
                                                     width: 1,
                                                   ),
                                                   borderRadius:
@@ -522,7 +522,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                                 enabledBorder:
                                                     UnderlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: Colors.transparent,
+                                                    color: Color(0x00000000),
                                                     width: 1,
                                                   ),
                                                   borderRadius:
@@ -536,7 +536,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                                 focusedBorder:
                                                     UnderlineInputBorder(
                                                   borderSide: BorderSide(
-                                                    color: Colors.transparent,
+                                                    color: Color(0x00000000),
                                                     width: 1,
                                                   ),
                                                   borderRadius:
@@ -603,7 +603,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                           ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Colors.transparent,
+                                              color: Color(0x00000000),
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -614,7 +614,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                           ),
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Colors.transparent,
+                                              color: Color(0x00000000),
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -672,7 +672,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                           ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Colors.transparent,
+                                              color: Color(0x00000000),
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -683,7 +683,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                           ),
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Colors.transparent,
+                                              color: Color(0x00000000),
                                               width: 1,
                                             ),
                                             borderRadius:

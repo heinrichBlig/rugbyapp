@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class LoginPageWidget extends StatefulWidget {
 class _LoginPageWidgetState extends State<LoginPageWidget> {
   TextEditingController emailTextController;
   TextEditingController passwordTextController;
+  bool passwordVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -22,6 +24,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
     super.initState();
     emailTextController = TextEditingController();
     passwordTextController = TextEditingController();
+    passwordVisibility = false;
   }
 
   @override
@@ -33,7 +36,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
-            color: Color(0xFF110631),
+            color: Color(0xFF262B35),
           ),
           child: Stack(
             children: [
@@ -52,7 +55,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
               Align(
                 alignment: Alignment(0, 0),
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, 0, 80),
+                  padding: EdgeInsets.fromLTRB(0, 30, 0, 80),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -80,7 +83,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       ),
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Color(0xFF3C2452),
+                                          color: Color(0xBA000000),
                                           width: 2,
                                         ),
                                         borderRadius: const BorderRadius.only(
@@ -90,7 +93,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       ),
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Color(0xFF3C2452),
+                                          color: Color(0xBA000000),
                                           width: 2,
                                         ),
                                         borderRadius: const BorderRadius.only(
@@ -130,7 +133,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                 alignment: Alignment(0, 0),
                                 child: TextFormField(
                                   controller: passwordTextController,
-                                  obscureText: true,
+                                  obscureText: !passwordVisibility,
                                   decoration: InputDecoration(
                                     hintText: 'Password',
                                     hintStyle: GoogleFonts.getFont(
@@ -140,7 +143,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     ),
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFF3C2452),
+                                        color: Color(0xBA000000),
                                         width: 2,
                                       ),
                                       borderRadius: const BorderRadius.only(
@@ -150,12 +153,24 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     ),
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xFF3C2452),
+                                        color: Color(0xBA000000),
                                         width: 2,
                                       ),
                                       borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
+                                      ),
+                                    ),
+                                    suffixIcon: InkWell(
+                                      onTap: () => setState(
+                                        () => passwordVisibility =
+                                            !passwordVisibility,
+                                      ),
+                                      child: Icon(
+                                        passwordVisibility
+                                            ? Icons.visibility_outlined
+                                            : Icons.visibility_off_outlined,
+                                        size: 22,
                                       ),
                                     ),
                                   ),
@@ -216,7 +231,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   fontSize: 15,
                                 ),
                                 borderSide: BorderSide(
-                                  color: Color(0xFF553BBA),
+                                  color: FlutterFlowTheme.secondaryColor,
                                   width: 2,
                                 ),
                                 borderRadius: 0,
@@ -256,7 +271,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     fontSize: 15,
                                   ),
                                   borderSide: BorderSide(
-                                    color: Color(0xFF553BBA),
+                                    color: FlutterFlowTheme.secondaryColor,
                                     width: 2,
                                   ),
                                   borderRadius: 0,

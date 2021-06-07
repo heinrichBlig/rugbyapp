@@ -51,9 +51,8 @@ class _GallaryWidgetState extends State<GallaryWidget> {
             Expanded(
               child: StreamBuilder<List<PostsRecord>>(
                 stream: queryPostsRecord(
-                  queryBuilder: (postsRecord) => postsRecord
-                      .where('user', isEqualTo: currentUserReference)
-                      .orderBy('set_time', descending: true),
+                  queryBuilder: (postsRecord) => postsRecord.where('user',
+                      isEqualTo: currentUserReference),
                 ),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
@@ -75,6 +74,7 @@ class _GallaryWidgetState extends State<GallaryWidget> {
                       mainAxisSpacing: 10,
                       childAspectRatio: 1,
                     ),
+                    shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     itemCount: gridViewPostsRecordList.length,
                     itemBuilder: (context, gridViewIndex) {
@@ -144,6 +144,7 @@ class _GallaryWidgetState extends State<GallaryWidget> {
                       final selectedMedia = await selectMedia(
                         maxWidth: 300.00,
                         maxHeight: 250.00,
+                        fromCamera: true,
                       );
                       if (selectedMedia != null &&
                           validateFileFormat(
