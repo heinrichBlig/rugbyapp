@@ -5,6 +5,7 @@ import '../components/icon_only_button_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/upload_media.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -80,8 +81,8 @@ class _GallaryWidgetState extends State<GallaryWidget> {
                     itemBuilder: (context, gridViewIndex) {
                       final gridViewPostsRecord =
                           gridViewPostsRecordList[gridViewIndex];
-                      return Image.network(
-                        gridViewPostsRecord.imgUrl,
+                      return CachedNetworkImage(
+                        imageUrl: gridViewPostsRecord.imgUrl,
                         width: 100,
                         height: 100,
                         fit: BoxFit.cover,
@@ -144,7 +145,6 @@ class _GallaryWidgetState extends State<GallaryWidget> {
                       final selectedMedia = await selectMedia(
                         maxWidth: 300.00,
                         maxHeight: 250.00,
-                        fromCamera: true,
                       );
                       if (selectedMedia != null &&
                           validateFileFormat(
