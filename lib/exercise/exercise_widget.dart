@@ -199,7 +199,8 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                       child: FlutterFlowVideoPlayer(
-                        path: columnExerciseRecord.videoPath,
+                        path:
+                            'https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4',
                         videoType: VideoType.network,
                         width: double.infinity,
                         autoPlay: false,
